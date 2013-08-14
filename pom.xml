@@ -7,6 +7,11 @@
   <version>1.0-SNAPSHOT</version>
   <name>Mozart Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
+  <properties>
+		<spring.version>3.2.3.RELEASE</spring.version>
+	</properties>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -14,8 +19,68 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-core</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>3.2.2.RELEASE</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.mongodb</groupId>
+		<artifactId>mongo-java-driver</artifactId>
+		<version>2.11.0</version>
+	</dependency>
+	
+	<dependency>
+	 <groupId>org.springframework.data</groupId>
+	 <artifactId>spring-data-mongodb</artifactId>
+	 <version>1.2.1.RELEASE</version>
+	</dependency> 
+	
+	<dependency>
+		<groupId>cglib</groupId>
+		<artifactId>cglib</artifactId>
+		<version>2.2.2</version>
+	</dependency>
   </dependencies>
   <build>
     <finalName>Mozart</finalName>
+	<plugins>
+		<plugin>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.0</version>
+			<configuration>
+				<source>1.6</source>
+				<target>1.6</target>
+			</configuration>
+		</plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-eclipse-plugin</artifactId>
+			<version>2.9</version>
+			<configuration>
+				<downloadSources>true</downloadSources>
+				<downloadJavadocs>true</downloadJavadocs>
+			</configuration>
+		</plugin>
+	</plugins>
   </build>
 </project>
