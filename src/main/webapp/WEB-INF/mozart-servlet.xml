@@ -9,7 +9,7 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
             					
-	<context:component-scan base-package="api.mozart.controller"/>
+	<context:component-scan base-package="api.mozart.*"/>
 	<mvc:annotation-driven />
  
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">

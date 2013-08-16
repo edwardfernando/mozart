@@ -14,8 +14,6 @@ public class InstrumentController {
 
 	@RequestMapping(value = "{instrument}", method = RequestMethod.GET)
 	public String getFruit(@PathVariable String instrument, ModelMap model) {
-		System.out.println("masuk");
-
 		Instrument ins = new Instrument();
 		ins.setKey("A");
 		ins.setName(instrument);
