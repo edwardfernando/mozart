@@ -49,6 +49,7 @@
 					<list>
 					   <value>api.mozart.model.Instrument</value>
 					   <value>api.mozart.model.Brand</value>
+					   <value>api.mozart.wrapper.InstrumentsWrapper</value>
 					</list>
 				   </property>
 				</bean>

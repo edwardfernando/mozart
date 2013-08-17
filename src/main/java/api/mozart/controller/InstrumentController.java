@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import api.mozart.model.Brand;
 import api.mozart.model.Instrument;
+import api.mozart.wrapper.InstrumentsWrapper;
 
 @Controller
 @RequestMapping("/instrument")
@@ -31,7 +32,27 @@ public class InstrumentController {
 		ins.getBrands().add(yamaha);
 		ins.getBrands().add(bach);
 
-		model.addAttribute("model", ins);
+		Instrument digitalPiano = new Instrument();
+		digitalPiano.setKey("B");
+		digitalPiano.setName(instrument);
+		digitalPiano.setQuality(1000);
+
+		Brand korg = new Brand();
+		korg.setName("Korg");
+		korg.setManufacture("Korg Japan");
+
+		Brand roland = new Brand();
+		roland.setName("Roland");
+		roland.setManufacture("Roland USA");
+
+		digitalPiano.getBrands().add(korg);
+		digitalPiano.getBrands().add(roland);
+
+		InstrumentsWrapper wrapper = new InstrumentsWrapper();
+		wrapper.getInstruments().add(ins);
+		wrapper.getInstruments().add(digitalPiano);
+
+		model.addAttribute("model", wrapper);
 
 		return "list";
 	}
