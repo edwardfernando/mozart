@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import api.mozart.model.Brand;
 import api.mozart.model.Instrument;
 import api.mozart.service.InstrumentService;
 
@@ -29,6 +30,17 @@ public class MongoCrudController {
 		if (StringUtils.hasText(ins.getId())) {
 			service.update(ins);
 		} else {
+			Brand yamaha = new Brand();
+			yamaha.setName("Yamaha");
+			yamaha.setManufacture("Yamaha Japan");
+
+			Brand bach = new Brand();
+			bach.setName("Bach");
+			bach.setManufacture("Bach USA");
+
+			ins.getBrands().add(yamaha);
+			ins.getBrands().add(bach);
+
 			service.add(ins);
 		}
 		return "redirect:/crud/instrument/";

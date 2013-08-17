@@ -15,7 +15,10 @@
         <c:forEach var="ins" items="${instrumentList}">
             <tr>
                 <td>${ins.name}</td>
-                <td><input type="button" value="delete" onclick="window.location='/mozart/crud/instrument/delete?id=${ins.id}'"/></td>
+                <td>
+                	<input type="button" value="delete" 
+                	onclick="window.location='/mozart/crud/instrument/delete?id=${ins.id}'"/>
+                </td>
             </tr>
         </c:forEach>
     </table>  

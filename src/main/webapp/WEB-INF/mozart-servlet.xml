@@ -48,6 +48,7 @@
 				   <property name="classesToBeBound">
 					<list>
 					   <value>api.mozart.model.Instrument</value>
+					   <value>api.mozart.model.Brand</value>
 					</list>
 				   </property>
 				</bean>

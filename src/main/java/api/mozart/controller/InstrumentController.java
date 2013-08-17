@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import api.mozart.model.Brand;
 import api.mozart.model.Instrument;
 
 @Controller
@@ -18,6 +19,17 @@ public class InstrumentController {
 		ins.setKey("A");
 		ins.setName(instrument);
 		ins.setQuality(1000);
+
+		Brand yamaha = new Brand();
+		yamaha.setName("Yamaha");
+		yamaha.setManufacture("Yamaha Japan");
+
+		Brand bach = new Brand();
+		bach.setName("Bach");
+		bach.setManufacture("Bach USA");
+
+		ins.getBrands().add(yamaha);
+		ins.getBrands().add(bach);
 
 		model.addAttribute("model", ins);
 
