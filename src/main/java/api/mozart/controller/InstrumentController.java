@@ -1,5 +1,7 @@
 package api.mozart.controller;
 
+import java.util.UUID;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,7 @@ public class InstrumentController {
 	@RequestMapping(value = "{instrument}", method = RequestMethod.GET)
 	public String getFruit(@PathVariable String instrument, ModelMap model) {
 		Instrument ins = new Instrument();
+		ins.setId(UUID.randomUUID().toString());
 		ins.setKey("A");
 		ins.setName(instrument);
 		ins.setQuality(1000);
@@ -33,6 +36,7 @@ public class InstrumentController {
 		ins.getBrands().add(bach);
 
 		Instrument digitalPiano = new Instrument();
+		digitalPiano.setId(UUID.randomUUID().toString());
 		digitalPiano.setKey("B");
 		digitalPiano.setName(instrument);
 		digitalPiano.setQuality(1000);

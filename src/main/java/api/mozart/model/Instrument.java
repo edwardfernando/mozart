@@ -3,14 +3,17 @@ package api.mozart.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 @XmlRootElement(name = "instrument")
+@XmlType(propOrder = { "name", "key", "quality", "brands" })
 public class Instrument {
 	@Id
 	String id;
@@ -23,6 +26,7 @@ public class Instrument {
 		return id;
 	}
 
+	@XmlAttribute
 	public void setId(String id) {
 		this.id = id;
 	}
