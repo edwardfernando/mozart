@@ -12,6 +12,15 @@
 	<context:component-scan base-package="api.mozart.*"/>
 	<mvc:annotation-driven />
  
+ 	<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
+        <property name="host" value="localhost" />
+    </bean>
+  	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg name="mongo" ref="mongo" />
+        <constructor-arg name="databaseName" value="ourFirstDB" />
+    </bean>
+ 	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+ 
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 	  <property name="order" value="1" />
 	  <property name="mediaTypes">
