@@ -19,10 +19,28 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="3">    
+  <class id="3" language="java" name="api.mozart.model.SocialNetworkProperty" project="mozart" 
+    file="/mozart/src/main/java/api/mozart/model/SocialNetworkProperty.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="84" width="180" x="323" y="368"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="api.mozart.model.Member" project="mozart" 
+    file="/mozart/src/main/java/api/mozart/model/Member.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="126" y="424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="5">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="4" name="brands"/>      
-      <multiplicity id="5" minimum="0" maximum="2147483647"/>    
+      <attribute id="6" name="brands"/>      
+      <multiplicity id="7" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  

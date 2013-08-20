@@ -12,7 +12,7 @@
         </form>
  
     <table border="1">
-        <c:forEach var="ins" items="${instrumentList}">
+        <c:forEach var="ins" items="${model.instruments}">
             <tr>
                 <td>${ins.name}</td>
                 <td>

@@ -1,9 +1,12 @@
 package api.mozart.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -61,4 +64,27 @@ public class InstrumentController {
 		return "list";
 	}
 
+	@RequestMapping("/guitar")
+	public String methodLuUntukPiano(ModelMap map) {
+		List<Instrument> guitarList = new ArrayList<Instrument>();
+
+		Instrument guitar1 = new Instrument();
+		guitar1.setName("Guitar Rock");
+
+		Instrument guitar2 = new Instrument();
+		guitar2.setName("Guitar Blues");
+
+		guitarList.add(guitar1);
+		guitarList.add(guitar2);
+
+		map.put("guitarListGue", guitarList);
+		map.put("model", new Instrument());
+		return "guitar_page";
+	}
+
+	@RequestMapping("/guitar/save")
+	public String saveGuitar(@ModelAttribute Instrument ins) {
+		System.out.println("Name :: " + ins.getName());
+		return "guitar_page";
+	}
 }
