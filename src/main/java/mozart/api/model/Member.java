@@ -1,4 +1,4 @@
-package api.mozart.model;
+package mozart.api.model;
 
 public class Member {
 	private String username;

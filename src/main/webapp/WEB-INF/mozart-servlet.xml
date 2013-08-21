@@ -12,7 +12,7 @@
         http://www.springframework.org/schema/util
 		http://www.springframework.org/schema/util/spring-util-3.0.xsd">
             					
-	<context:component-scan base-package="api.mozart.*"/>
+	<context:component-scan base-package="mozart.api.*"/>
 	<mvc:annotation-driven />
  
  	<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
@@ -23,20 +23,52 @@
         <constructor-arg name="databaseName" value="ourFirstDB" />
     </bean>
  	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+	  <property name="order" value="1" />
+	  <property name="mediaTypes">
+		<map>
+		   <entry key="json" value="application/json" />
+		   <entry key="xml" value="application/xml" />
+		</map>
+	  </property>
  
+	  <property name="defaultViews">
+		<list>
+		 <!--  JSON View -->
+		  <bean
+			class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+		  </bean>
  
- 	<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
-		<property name="contentType" value="text/plain"/>
+		  <!-- JAXB XML View -->
+		  <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+			<constructor-arg>
+				<bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+				   <property name="packagesToScan">
+					<list>
+					   <value>mozart.api.model</value>
+					   <value>mozart.api.wrapper</value>
+					</list>
+				   </property>
+				</bean>
+			</constructor-arg>
+		  </bean>
+		 </list>
+	  </property>
+	  <property name="ignoreAcceptHeader" value="true" />
+ 
 	</bean>
  
- 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-		<property name="messageConverters">
-			<util:list id="beanList">
-				<ref bean="jsonMessageConverter"/>
-			</util:list>
+	<!-- If no extension matched, use JSP view -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="2" />
+		<property name="prefix">
+			<value>/WEB-INF/jsp/</value>
 		</property>
-	</bean>
- 
- 	<bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean> 
  
 </beans>

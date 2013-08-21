@@ -1,4 +1,8 @@
-package api.mozart.controller;
+package mozart.api.controller;
+
+import mozart.api.model.Brand;
+import mozart.api.model.Instrument;
+import mozart.api.service.InstrumentService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,9 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import api.mozart.model.Brand;
-import api.mozart.model.Instrument;
-import api.mozart.service.InstrumentService;
 
 @Controller
 @RequestMapping("/crud/instrument")

@@ -1,13 +1,14 @@
-package api.mozart.service;
+package mozart.api.service;
 
 import java.util.List;
 import java.util.UUID;
+
+import mozart.api.model.Instrument;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
-import api.mozart.model.Instrument;
 
 @Component
 public class InstrumentService {

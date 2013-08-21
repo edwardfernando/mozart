@@ -1,4 +1,4 @@
-package api.mozart.model;
+package mozart.api.model;
 
 import java.util.ArrayList;
 import java.util.List;
