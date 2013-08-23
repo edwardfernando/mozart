@@ -13,32 +13,26 @@ public class AttachmentController extends mozart.api.controller.Controller<Attac
 
 	@Override
 	public List<Attachment> loadAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Attachment loadById(String id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void save(Attachment model) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public Attachment update(Attachment model) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void delete(Attachment model) {
-		// TODO Auto-generated method stub
-
 	}
 
 }
