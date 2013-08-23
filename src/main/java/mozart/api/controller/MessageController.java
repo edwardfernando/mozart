@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/api/message")
-public class MessageController implements mozart.api.controller.Controller<Message> {
+public class MessageController extends mozart.api.controller.Controller<Message> {
 
 	@Override
 	public List<Message> loadAll() {

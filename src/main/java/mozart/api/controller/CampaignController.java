@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/api/campaign")
-public class CampaignController implements mozart.api.controller.Controller<Campaign> {
+public class CampaignController extends mozart.api.controller.Controller<Campaign> {
 
 	@Override
 	public List<Campaign> loadAll() {
