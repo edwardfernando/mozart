@@ -17,7 +17,6 @@ public class Campaign {
 	private Date validFrom;
 	private Date validUntil;
 	private String token;
-	private Date tokenExpiryDate;
 	private String status;
 	private List<Message> messages = new ArrayList<Message>();
 
@@ -82,15 +81,6 @@ public class Campaign {
 	@XmlElement
 	public void setToken(String token) {
 		this.token = token;
-	}
-
-	public Date getTokenExpiryDate() {
-		return tokenExpiryDate;
-	}
-
-	@XmlElement
-	public void setTokenExpiryDate(Date tokenExpiryDate) {
-		this.tokenExpiryDate = tokenExpiryDate;
 	}
 
 	public String getStatus() {

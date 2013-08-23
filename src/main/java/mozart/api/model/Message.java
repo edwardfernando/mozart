@@ -13,8 +13,11 @@ public class Message {
 	private String id;
 	private String message;
 	private Date date;
+	private Message rootMessage;
+	private User member;
 	private Campaign campaign;
 	private List<Attachment> attachments = new ArrayList<Attachment>();
+	private List<MessageFeedback> feeedbacks = new ArrayList<MessageFeedback>();
 
 	public String getId() {
 		return id;
@@ -59,6 +62,33 @@ public class Message {
 
 	public List<Attachment> getAttachments() {
 		return attachments;
+	}
+
+	public User getMember() {
+		return member;
+	}
+
+	@XmlElement
+	public void setMember(User member) {
+		this.member = member;
+	}
+
+	public Message getRootMessage() {
+		return rootMessage;
+	}
+
+	@XmlElement
+	public void setRootMessage(Message rootMessage) {
+		this.rootMessage = rootMessage;
+	}
+
+	public List<MessageFeedback> getFeeedbacks() {
+		return feeedbacks;
+	}
+
+	@XmlElement
+	public void setFeeedbacks(List<MessageFeedback> feeedbacks) {
+		this.feeedbacks = feeedbacks;
 	}
 
 }
