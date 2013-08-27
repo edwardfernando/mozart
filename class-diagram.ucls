@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.3" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
   realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
-  <class id="1" language="java" name="mozart.api.model.MediaNetwork" project="mozart" 
-    file="/mozart/src/main/java/mozart/api/model/MediaNetwork.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="489" y="534"/>    
+  <class id="1" language="java" name="mozart.api.model.Account" project="mozart" 
+    file="/mozart/src/main/java/mozart/api/model/Account.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="110" y="457"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="mozart.api.model.Campaign" project="mozart" 
-    file="/mozart/src/main/java/mozart/api/model/Campaign.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="90" y="157"/>    
+  <class id="2" language="java" name="mozart.api.model.Attachment" project="mozart" 
+    file="/mozart/src/main/java/mozart/api/model/Attachment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="559" y="131"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,70 +21,70 @@
   </class>  
   <class id="3" language="java" name="mozart.api.model.Badge" project="mozart" 
     file="/mozart/src/main/java/mozart/api/model/Badge.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="525" y="365"/>    
+    <position height="-1" width="-1" x="94" y="267"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="mozart.api.model.MessageFeedback" project="mozart" 
-    file="/mozart/src/main/java/mozart/api/model/MessageFeedback.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="329" y="276"/>    
+  <class id="4" language="java" name="mozart.api.model.Campaign" project="mozart" 
+    file="/mozart/src/main/java/mozart/api/model/Campaign.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="772" y="182"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <enumeration id="5" language="java" name="mozart.api.model.MessageFeedback.FeedbackType" project="mozart" 
+  <class id="5" language="java" name="mozart.api.model.MessageFeedback" project="mozart" 
     file="/mozart/src/main/java/mozart/api/model/MessageFeedback.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="98" y="407"/>    
+    <position height="-1" width="-1" x="381" y="83"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="6" language="java" name="mozart.api.model.MessageFeedback.FeedbackType" project="mozart" 
+    file="/mozart/src/main/java/mozart/api/model/MessageFeedback.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="105" y="84"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </enumeration>  
-  <class id="6" language="java" name="mozart.api.model.Message" project="mozart" 
-    file="/mozart/src/main/java/mozart/api/model/Message.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="337" y="97"/>    
-    <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="false" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="7" language="java" name="mozart.api.model.Attachment" project="mozart" 
-    file="/mozart/src/main/java/mozart/api/model/Attachment.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="651" y="72"/>    
-    <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="false" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="8" language="java" name="mozart.api.model.User" project="mozart" 
+  <class id="7" language="java" name="mozart.api.model.User" project="mozart" 
     file="/mozart/src/main/java/mozart/api/model/User.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="718" y="227"/>    
+    <position height="-1" width="-1" x="271" y="281"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="mozart.api.model.MediaNetworkProperty" project="mozart" 
+  <class id="8" language="java" name="mozart.api.model.Message" project="mozart" 
+    file="/mozart/src/main/java/mozart/api/model/Message.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="513" y="358"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="mozart.api.model.MediaNetwork" project="mozart" 
+    file="/mozart/src/main/java/mozart/api/model/MediaNetwork.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="333" y="542"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="mozart.api.model.MediaNetworkProperty" project="mozart" 
     file="/mozart/src/main/java/mozart/api/model/MediaNetworkProperty.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="250" y="571"/>    
-    <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="false" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="10" language="java" name="mozart.api.model.Account" project="mozart" 
-    file="/mozart/src/main/java/mozart/api/model/Account.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="709" y="473"/>    
+    <position height="-1" width="-1" x="568" y="563"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -92,112 +92,123 @@
     </display>  
   </class>  
   <association id="11">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="12" name="badges"/>      
-      <multiplicity id="13" minimum="0" maximum="2147483647"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="12" name="feedbackType">        
+        <position height="18" width="85" x="201" y="53"/>      
+      </attribute>      
+      <multiplicity id="13" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="14">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="15" name="badges"/>      
+      <multiplicity id="16" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="14">    
-    <bendpoint x="549" y="196"/>    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="15" name="member"/>      
-      <multiplicity id="16" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <association id="17">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="18" name="campaign"/>      
-      <multiplicity id="19" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="20">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="5"/>  
-  </nesting>  
-  <association id="21">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="22" name="attachments"/>      
-      <multiplicity id="23" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="24">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="25" name="accounts"/>      
-      <multiplicity id="26" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="27">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="28" name="messages"/>      
-      <multiplicity id="29" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="30">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="31" name="feeedbacks"/>      
-      <multiplicity id="32" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="33">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="34" name="rootMessage"/>      
-      <multiplicity id="35" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="36">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="37" name="properties"/>      
-      <multiplicity id="38" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="39">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="40" name="feedbackType"/>      
-      <multiplicity id="41" minimum="0" maximum="1"/>    
+      <attribute id="18" name="feeedbacks"/>      
+      <multiplicity id="19" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="42">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="43" name="mediaNetwork"/>      
-      <multiplicity id="44" minimum="0" maximum="1"/>    
+  <association id="20">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="21" name="properties"/>      
+      <multiplicity id="22" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="23">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="24" name="accounts"/>      
+      <multiplicity id="25" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="45">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="46" name="member"/>      
-      <multiplicity id="47" minimum="0" maximum="1"/>    
+  <association id="26">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="27" name="message"/>      
+      <multiplicity id="28" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <nesting id="29">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
+  </nesting>  
+  <association id="30">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="31" name="member"/>      
+      <multiplicity id="32" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="33">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="34" name="campaign"/>      
+      <multiplicity id="35" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="36">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="37" name="messages"/>      
+      <multiplicity id="38" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="39">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="40" name="rootMessage"/>      
+      <multiplicity id="41" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="42">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="43" name="mediaNetwork">        
+        <position height="18" width="87" x="161" y="466"/>      
+      </attribute>      
+      <multiplicity id="44" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="45">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="46" name="attachments"/>      
+      <multiplicity id="47" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <association id="48">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="49" name="message"/>      
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="49" name="member"/>      
       <multiplicity id="50" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="51">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="52" name="mediaNetworks"/>      
+      <multiplicity id="53" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" 

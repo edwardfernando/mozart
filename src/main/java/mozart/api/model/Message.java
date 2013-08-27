@@ -16,6 +16,7 @@ public class Message {
 	private Message rootMessage;
 	private User member;
 	private Campaign campaign;
+	private List<MediaNetwork> mediaNetworks = new ArrayList<MediaNetwork>();
 	private List<Attachment> attachments = new ArrayList<Attachment>();
 	private List<MessageFeedback> feeedbacks = new ArrayList<MessageFeedback>();
 
@@ -89,6 +90,15 @@ public class Message {
 	@XmlElement
 	public void setFeeedbacks(List<MessageFeedback> feeedbacks) {
 		this.feeedbacks = feeedbacks;
+	}
+
+	public List<MediaNetwork> getMediaNetworks() {
+		return mediaNetworks;
+	}
+
+	@XmlElement
+	public void setMediaNetworks(List<MediaNetwork> mediaNetworks) {
+		this.mediaNetworks = mediaNetworks;
 	}
 
 }
