@@ -10,13 +10,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class User {
 
 	private String id;
-	private String username;
-	private String password;
+	private List<Account> accounts = new ArrayList<Account>();
 	private List<Badge> badges = new ArrayList<Badge>();
-
-	public String getUsername() {
-		return username;
-	}
 
 	public String getId() {
 		return id;
@@ -27,20 +22,6 @@ public class User {
 		this.id = id;
 	}
 
-	@XmlElement
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	@XmlElement
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public List<Badge> getBadges() {
 		return badges;
 	}
@@ -48,6 +29,15 @@ public class User {
 	@XmlElement
 	public void setBadges(List<Badge> badges) {
 		this.badges = badges;
+	}
+
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+
+	@XmlElement
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
 	}
 
 }
