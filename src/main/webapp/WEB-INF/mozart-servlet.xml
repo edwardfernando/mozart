@@ -23,7 +23,7 @@
     </bean>
   	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg name="mongo" ref="mongo" />
-        <constructor-arg name="databaseName" value="ourFirstDB" />
+        <constructor-arg name="databaseName" value="mozart-api" />
     </bean>
  	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
