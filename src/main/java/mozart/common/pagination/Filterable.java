@@ -8,6 +8,7 @@ import java.util.List;
  * 
  */
 public interface Filterable {
+
 	public List filter(FilterableQuery query);
 
 	public Long count(FilterableQuery query);
