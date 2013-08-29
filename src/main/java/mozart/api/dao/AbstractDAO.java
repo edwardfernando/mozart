@@ -2,17 +2,20 @@ package mozart.api.dao;
 
 import java.util.List;
 
+import mozart.common.pagination.Filterable;
+import mozart.common.pagination.FilterableQuery;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
-public abstract class AbstractDAO<T> {
+public abstract class AbstractDAO<T> implements Filterable {
 
 	@Autowired
 	private MongoTemplate template;
 
-	protected abstract Class<T> getModel();
+	public abstract Class<T> getModel();
 
 	public List<T> loadAll() {
 		return template.findAll(getModel(), getModel().getSimpleName());
@@ -32,5 +35,18 @@ public abstract class AbstractDAO<T> {
 
 	public void delete(T model) {
 		template.remove(model, getModel().getSimpleName());
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> filter(FilterableQuery query) {
+		query.setFilterable(this);
+		return query.execute();
+	}
+
+	@Override
+	public Long count(FilterableQuery query) {
+		query.setFilterable(this);
+		return query.count();
 	}
 }
