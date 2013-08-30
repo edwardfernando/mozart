@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class MessageDAO extends AbstractDAO<Message> {
 
 	@Override
-	protected Class<Message> getModel() {
+	public Class<Message> getModel() {
 		return Message.class;
 	}
 
