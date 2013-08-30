@@ -6,6 +6,7 @@ import java.util.List;
 
 import mozart.api.model.Message;
 import mozart.api.service.MessageService;
+import mozart.common.exception.MozartException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,6 +65,12 @@ public class MessageController extends mozart.api.controller.Controller<Message>
 		service.delete(service.loadById(id));
 
 		return new Message();
+	}
+
+	@ResponseBody
+	@RequestMapping("/testexception")
+	public Message testException() throws MozartException {
+		throw new MozartException("Test Aja Kok");
 	}
 
 	@Override
