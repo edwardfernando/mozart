@@ -15,7 +15,7 @@
     http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.2.xsd
     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
             					
-	<context:component-scan base-package="mozart.api.*"/>
+	<context:component-scan base-package="mozart.*"/>
 	<mvc:annotation-driven />
  
  	<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
