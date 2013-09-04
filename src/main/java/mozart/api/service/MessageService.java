@@ -16,7 +16,7 @@ public class MessageService implements Service<Message> {
 
 	@Override
 	public List<Message> loadAll() {
-		return null;
+		return dao.loadAll();
 	}
 
 	@Override
