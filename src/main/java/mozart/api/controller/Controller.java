@@ -1,9 +1,9 @@
 package mozart.api.controller;
 
-import java.util.List;
+import mozart.api.model.CollectionWrapper;
 
 public abstract class Controller<T> {
-	public abstract List<T> loadAll();
+	public abstract CollectionWrapper loadAll();
 
 	public abstract T loadById(String id);
 

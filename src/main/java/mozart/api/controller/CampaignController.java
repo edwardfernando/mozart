@@ -1,20 +1,14 @@
 package mozart.api.controller;
 
-import java.util.List;
-
 import mozart.api.model.Campaign;
+import mozart.api.model.CollectionWrapper;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/api/campaign")
+@RequestMapping("/campaign")
 public class CampaignController extends mozart.api.controller.Controller<Campaign> {
-
-	@Override
-	public List<Campaign> loadAll() {
-		return null;
-	}
 
 	@Override
 	public Campaign loadById(String id) {
@@ -34,6 +28,12 @@ public class CampaignController extends mozart.api.controller.Controller<Campaig
 	@Override
 	public void delete(Campaign model) {
 
+	}
+
+	@Override
+	public CollectionWrapper loadAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
