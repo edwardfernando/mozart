@@ -4,22 +4,12 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Badge {
+public class Badge extends Model {
 
-	private String id;
 	private String name;
 	private String description;
 	private String iconUrl;
 	private Boolean isActive;
-
-	public String getId() {
-		return id;
-	}
-
-	@XmlElement
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;

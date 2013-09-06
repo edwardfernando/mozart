@@ -6,25 +6,15 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class MessageFeedback {
+public class MessageFeedback extends Model {
 
 	enum FeedbackType {
 		upvote, downvote, badMessage
 	}
 
-	private String id;
 	private FeedbackType feedbackType;
 	private User member;
 	private Date date;
-
-	public String getId() {
-		return id;
-	}
-
-	@XmlElement
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public FeedbackType getFeedbackType() {
 		return feedbackType;

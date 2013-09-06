@@ -7,15 +7,12 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 @XmlRootElement
 public class Message extends Model {
 
-	@Id
-	private String id;
 	private String message;
 	private Date date;
 	private Message rootMessage;
@@ -24,15 +21,6 @@ public class Message extends Model {
 	private List<MediaNetwork> mediaNetworks = new ArrayList<MediaNetwork>();
 	private List<Attachment> attachments = new ArrayList<Attachment>();
 	private List<MessageFeedback> feeedbacks = new ArrayList<MessageFeedback>();
-
-	public String getId() {
-		return id;
-	}
-
-	@XmlElement
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getMessage() {
 		return message;

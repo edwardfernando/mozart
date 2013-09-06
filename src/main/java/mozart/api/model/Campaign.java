@@ -8,9 +8,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Campaign {
+public class Campaign extends Model {
 
-	private String id;
 	private String caption;
 	private String name;
 	private String description;
@@ -19,15 +18,6 @@ public class Campaign {
 	private String token;
 	private String status;
 	private List<Message> messages = new ArrayList<Message>();
-
-	public String getId() {
-		return id;
-	}
-
-	@XmlElement
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getCaption() {
 		return caption;
