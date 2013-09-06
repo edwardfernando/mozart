@@ -7,7 +7,6 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,8 +16,6 @@ public class Message extends Model {
 
 	@Id
 	private String id;
-
-	@NotEmpty
 	private String message;
 	private Date date;
 	private Message rootMessage;
