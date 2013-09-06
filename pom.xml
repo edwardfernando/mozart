@@ -74,17 +74,38 @@
       <version>${resteasy.version}</version>
     </dependency>
     
+    <!-- 
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-jaxb-provider</artifactId>
       <version>${resteasy.version}</version>
     </dependency>
+     -->
+     
+     <!-- NEW -->
+     <dependency>
+	  <groupId>org.jboss.resteasy</groupId>
+	  <artifactId>resteasy-jaxb-provider</artifactId>
+	  <version>3.0.3.Final</version>
+	  <scope>compile</scope>
+	  <exclusions>
+	    <exclusion>
+	      <groupId>com.sun.xml.bind</groupId>
+	      <artifactId>jaxb-impl</artifactId>
+	    </exclusion>
+	    <exclusion>
+	      <groupId>com.sun.xml.stream</groupId>
+	      <artifactId>sjsxp</artifactId>
+	    </exclusion>
+	  </exclusions>
+	</dependency>
+     <!-- NEW -->
 
     <dependency>
-      <groupId>org.jboss.resteasy</groupId>
-      <artifactId>jaxrs-api</artifactId>
-      <version>2.3.0.GA</version>
-    </dependency>
+	  <groupId>org.jboss.resteasy</groupId>
+	  <artifactId>jaxrs-api</artifactId>
+	  <version>2.0.0.GA</version>
+	</dependency>
 
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
@@ -150,7 +171,14 @@
 	  <artifactId>google-collections</artifactId>
 	  <version>1.0</version>
 	</dependency>
-
+	
+	<!-- 
+	<dependency>
+	  <groupId>org.jboss.resteasy</groupId>
+	  <artifactId>resteasy-jackson-provider</artifactId>
+	  <version>3.0.3.Final</version>
+	</dependency>
+	-->
   </dependencies>
   
   <build>
