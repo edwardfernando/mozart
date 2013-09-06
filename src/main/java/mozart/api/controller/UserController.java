@@ -6,29 +6,29 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import mozart.api.model.Message;
-import mozart.api.service.MessageService;
+import mozart.api.model.User;
 import mozart.api.service.Service;
+import mozart.api.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@Path("/message")
+@Path("/user")
 @Produces(MediaType.APPLICATION_JSON)
-public class MessageController extends BaseController<Message> {
+public class UserController extends BaseController<User> {
 
 	@Autowired
-	private MessageService service;
+	private UserService service;
 
 	@Override
-	protected Service<Message> getService() {
+	protected Service<User> getService() {
 		return service;
 	}
 
 	@Override
 	protected Type getType() {
-		return Message.class;
+		return User.class;
 	}
 
 }
