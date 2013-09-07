@@ -16,19 +16,18 @@ import org.springframework.stereotype.Component;
 @Component
 @Path("/user")
 @Produces(MediaType.APPLICATION_JSON)
-public class UserController extends BaseController<User> {
+public class UserController extends Controller<User> {
 
 	@Autowired
 	private UserService service;
-
-	@Override
-	protected Service<User> getService() {
-		return service;
-	}
 
 	@Override
 	protected Type getType() {
 		return User.class;
 	}
 
+	@Override
+	protected Service<User> getService() {
+		return service;
+	}
 }

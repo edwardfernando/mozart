@@ -1,19 +1,26 @@
 package api.mozart.insertdata;
 
-import mozart.api.dao.UserDAO;
-import mozart.api.model.User;
+import java.net.URISyntaxException;
 
+import mozart.api.controller.UserController;
+
+import org.jboss.resteasy.core.Dispatcher;
+import org.jboss.resteasy.mock.MockDispatcherFactory;
+import org.jboss.resteasy.mock.MockHttpRequest;
+import org.jboss.resteasy.mock.MockHttpResponse;
 import org.junit.Test;
 
 public class TestInsertData {
 
 	@Test
-	public void testInsertUserData() {
-		UserDAO userdao = new UserDAO();
+	public void testInsertUserData() throws URISyntaxException {
 
-		User user = new User();
-		user.setId("USER-ID-1");
+		Dispatcher dispatcher = MockDispatcherFactory.createDispatcher();
+		dispatcher.getRegistry().addSingletonResource(new UserController());
 
-		userdao.save(user);
+		MockHttpRequest request = MockHttpRequest.get("/user/save?id=FIRST_USER_ID");
+
+		dispatcher.invoke(request, new MockHttpResponse());
+
 	}
 }
