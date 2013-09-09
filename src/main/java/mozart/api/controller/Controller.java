@@ -4,13 +4,17 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
 
-import mozart.api.service.Service;
+import mozart.common.config.ControllerConfig;
 import mozart.common.exception.MozartException;
 
 import org.springframework.stereotype.Component;
@@ -22,29 +26,35 @@ public abstract class Controller<T> {
 	@Path("")
 	public Response loadAll() {
 		GenericEntity<List<T>> ge = new GenericEntity<List<T>>(
-		                                                       getService().loadAll(),
+		                                                       getConfig().getService().loadAll(),
 		                                                       new MozartParameterizedType());
-
 		return Response.ok(ge).build();
 	}
 
 	@GET
 	@Path("/{id}")
 	public Response loadById(@PathParam("id") String id) throws MozartException {
-		return Response.ok(getService().loadById(id)).build();
+		return Response.ok(getConfig().getService().loadById(id)).build();
 	}
 
-	@GET
-	@Path("/delete/{id}")
-	public void delete(@PathParam("id") String id) throws MozartException {
-		getService().delete(id);
+	@DELETE
+	@Path("/{id}")
+	public Response delete(@PathParam("id") String id) throws MozartException {
+		getConfig().getService().delete(id);
+		return Response.ok().build();
+	}
+
+	@POST
+	@Path("")
+	public Response save(@Context HttpServletRequest request) throws MozartException {
+		throw new MozartException("Unrecognized POST action for " + request.getPathInfo());
 	}
 
 	private class MozartParameterizedType implements ParameterizedType {
 
 		@Override
 		public Type[] getActualTypeArguments() {
-			return new Type[] { getType() };
+			return new Type[] { getConfig().getType() };
 		}
 
 		@Override
@@ -59,7 +69,5 @@ public abstract class Controller<T> {
 
 	}
 
-	protected abstract Service<T> getService();
-
-	protected abstract Type getType();
+	protected abstract ControllerConfig<T> getConfig();
 }

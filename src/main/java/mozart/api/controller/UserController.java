@@ -1,14 +1,12 @@
 package mozart.api.controller;
 
-import java.lang.reflect.Type;
-
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import mozart.api.model.User;
-import mozart.api.service.Service;
 import mozart.api.service.UserService;
+import mozart.common.config.ControllerConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,13 +19,12 @@ public class UserController extends Controller<User> {
 	@Autowired
 	private UserService service;
 
-	@Override
-	protected Type getType() {
-		return User.class;
-	}
+	@Autowired
+	private ControllerConfig<User> config;
 
 	@Override
-	protected Service<User> getService() {
-		return service;
+	protected ControllerConfig<User> getConfig() {
+		return config.build(service, User.class);
 	}
+
 }
