@@ -2,6 +2,8 @@ package mozart.api.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import mozart.api.dao.AbstractDAO;
 import mozart.common.exception.MozartException;
 
@@ -25,12 +27,10 @@ public abstract class Service<T> {
 		return obj;
 	}
 
-	public void save(T model) {
-		getDao().save(model);
-	}
-
-	public void update(T model) {
-		save(model);
+	public void save(HttpServletRequest request) throws MozartException {
+		throw new MozartException("Unrecognized POST action for " +
+		                          request.getPathInfo() +
+		                          " in service layer");
 	}
 
 	public void delete(String id) throws MozartException {
