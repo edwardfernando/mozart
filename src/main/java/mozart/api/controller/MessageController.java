@@ -33,7 +33,7 @@ public class MessageController extends Controller<Message> {
 	}
 
 	@Override
-	@Expects("message")
+	@Expects({ "message", "id", "anotherparam" })
 	public Response save(HttpServletRequest request) throws MozartException {
 		service.save(request);
 		return Response.ok().build();
