@@ -1,5 +1,7 @@
 package mozart.common.aop;
 
+import java.util.Arrays;
+
 import javax.servlet.http.HttpServletRequest;
 
 import mozart.common.annotation.Expects;
@@ -20,8 +22,12 @@ public class ExpectsAOP {
 				                          " parameter '" +
 				                          expectedValue +
 				                          "' at URI " +
-				                          request.getPathInfo());
+				                          request.getPathInfo() +
+				                          ". Parameter needed for this URI : " +
+				                          Arrays.toString(expects.value()));
+
 			}
 		}
 	}
+
 }
