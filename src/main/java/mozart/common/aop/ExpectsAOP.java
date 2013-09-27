@@ -1,11 +1,9 @@
 package mozart.common.aop;
 
-import java.util.Arrays;
-
 import javax.servlet.http.HttpServletRequest;
 
-import mozart.common.annotation.Expects;
-import mozart.common.exception.MozartException;
+import mozart.common.annotation.ExpectParam;
+import mozart.common.validator.ValidatorUtil;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -14,20 +12,8 @@ import org.aspectj.lang.annotation.Before;
 public class ExpectsAOP {
 
 	@Before("@annotation(expects) && args(request,..)")
-	public void inspect(Expects expects, HttpServletRequest request) throws MozartException {
-		for (String expectedValue : expects.value()) {
-			if (request.getParameter(expectedValue) == null) {
-				throw new MozartException("Expected " +
-				                          request.getMethod() +
-				                          " parameter '" +
-				                          expectedValue +
-				                          "' at URI " +
-				                          request.getPathInfo() +
-				                          ". Parameter needed for this URI : " +
-				                          Arrays.toString(expects.value()));
-
-			}
-		}
+	public void inspect(ExpectParam expects, HttpServletRequest request) throws Exception {
+		ValidatorUtil.instance().validateRequest(expects, request);
 	}
 
 }

@@ -13,9 +13,7 @@ public class ExceptionResolver implements ExceptionMapper<Throwable> {
 
 	@Override
 	public Response toResponse(Throwable ex) {
-		return Response
-		    .status(Status.BAD_REQUEST)
-		    .entity(new ErrorMessage(ex.getMessage()))
-		    .build();
+		return Response.status(Status.BAD_REQUEST).entity(new Errors(ex.getMessage())).build();
 	}
+
 }
