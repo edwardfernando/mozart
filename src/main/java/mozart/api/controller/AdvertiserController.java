@@ -6,9 +6,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import mozart.api.model.Message;
-import mozart.api.service.MessageService;
-import mozart.api.wrapper.MessageWrapper;
+import mozart.api.model.Advertiser;
+import mozart.api.service.AdvertiserService;
 import mozart.common.annotation.ExpectParam;
 import mozart.common.config.ControllerConfig;
 import mozart.common.exception.MozartException;
@@ -17,31 +16,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@Path("/message")
+@Path("/advertiser")
 @Produces(MediaType.APPLICATION_JSON)
-public class MessageController extends Controller<Message> {
+public class AdvertiserController extends Controller<Advertiser> {
 
 	@Autowired
-	private MessageService service;
+	private AdvertiserService service;
 
 	@Autowired
-	private ControllerConfig<Message> config;
+	private ControllerConfig<Advertiser> config;
 
 	@Override
-	public Response loadAll() {
-		return Response.ok(new MessageWrapper(service.loadAll())).build();
-	}
-
-	@Override
-	@ExpectParam(Message.class)
+	@ExpectParam(value = Advertiser.class, optional = { "optional_parameter" })
 	public Response save(HttpServletRequest request) throws MozartException {
 		service.save(request);
 		return Response.ok().build();
 	}
 
 	@Override
-	protected ControllerConfig<Message> getConfig() {
-		return config.build(service, Message.class);
+	protected ControllerConfig<Advertiser> getConfig() {
+		return config.build(service, Advertiser.class);
 	}
 
 }
