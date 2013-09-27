@@ -9,31 +9,6 @@ import mozart.common.exception.MozartException;
 
 public class MinValidator extends Validator {
 
-	// @Override
-	// public void validate(HtmlAttribute att, Errors err) throws Exception {
-	// for (Annotation annot :
-	// att.getEntity().getDeclaredField(att.getName()).getAnnotations()) {
-	// if (annot instanceof Min) {
-	// validateMin(att, (Min) annot, err);
-	// }
-	// }
-	// }
-	//
-	// private void validateMin(HtmlAttribute att, Min min, Errors err) {
-	// if (!NumberUtil.isNumber(att.getValue().toString())) {
-	// err.rejectValue(getFieldName(att.getName()), "", "Field " +
-	// att.getName() +
-	// " only accepts numbers.");
-	// return;
-	// }
-	//
-	// if (Double.valueOf(att.getValue().toString()) < min.min()) {
-	// err.rejectValue(getFieldName(att.getName()), "", "Minimun number is " +
-	// min.min());
-	// return;
-	// }
-	// }
-
 	@Override
 	public void validate(Annotation annot, String paramName, String value,
 	        HttpServletRequest request) throws Exception {
