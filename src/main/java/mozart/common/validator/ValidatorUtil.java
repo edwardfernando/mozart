@@ -61,7 +61,6 @@ public class ValidatorUtil {
 
 			for (Annotation annot : field.getAnnotations()) {
 				if (validators.containsKey(annot.annotationType())) {
-					System.out.println("Validator for " + annot.annotationType() + " found!");
 					validators.get(annot.annotationType()).validate(
 					    annot,
 					    parameterName,

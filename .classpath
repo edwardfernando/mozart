@@ -50,4 +50,8 @@
   <classpathentry kind="var" path="M2_REPO/com/google/collections/google-collections/1.0/google-collections-1.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/aspectj/aspectjrt/1.7.3/aspectjrt-1.7.3.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/aspectj/aspectjweaver/1.7.3/aspectjweaver-1.7.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-validator/commons-validator/1.4.0/commons-validator-1.4.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-digester/commons-digester/1.8/commons-digester-1.8.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-lang3/3.1/commons-lang3-3.1.jar" sourcepath="M2_REPO/org/apache/commons/commons-lang3/3.1/commons-lang3-3.1-sources.jar"/>
 </classpath>
