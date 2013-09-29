@@ -3,7 +3,6 @@ package mozart.api.model;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import mozart.common.annotation.Email;
 import mozart.common.annotation.HttpParam;
 
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,12 +11,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @XmlRootElement
 public class Advertiser extends Model {
 
-	@Email
 	@HttpParam
 	private String organizationName;
 
+	@HttpParam
 	private String organizationType;
 
+	@HttpParam
 	private String address;
 
 	private String country;
