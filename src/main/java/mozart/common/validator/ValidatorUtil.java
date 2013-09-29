@@ -17,6 +17,8 @@ import mozart.common.annotation.NotEmpty;
 import mozart.common.annotation.NotNull;
 import mozart.common.annotation.NumberOnly;
 import mozart.common.annotation.Pattern;
+import mozart.common.exception.Error;
+import mozart.common.exception.ErrorWrapper;
 import mozart.common.exception.MozartException;
 
 import com.google.common.collect.Maps;
@@ -25,7 +27,7 @@ public class ValidatorUtil {
 
 	private static ValidatorUtil instance;
 	private static Map<Class<? extends Annotation>, Validator> validators = Maps.newHashMap();
-	public static final String REQUIRED_PARAM_MESSAGE = "Expecting parameter %s at URI %s";
+	public static final String REQUIRED_PARAM_MESSAGE = "Expecting parameter %s";
 	static {
 		validators.put(Email.class, new EmailValidator());
 		validators.put(IntegerOnly.class, new IntegerOnlyValidator());
@@ -41,6 +43,9 @@ public class ValidatorUtil {
 	public void validateRequest(ExpectParam expectParam, HttpServletRequest request)
 	        throws Exception {
 
+		ErrorWrapper wrapper = new ErrorWrapper();
+
+		// Validate mandatory parameters
 		for (Field field : expectParam.value().getDeclaredFields()) {
 
 			HttpParam httpParam = field.getAnnotation(HttpParam.class);
@@ -53,33 +58,36 @@ public class ValidatorUtil {
 			String parameterValue = request.getParameter(parameterName);
 
 			if (parameterValue == null) {
-				throw new MozartException(String.format(
+				wrapper.registerError(new Error(parameterName, String.format(
 				    REQUIRED_PARAM_MESSAGE,
-				    parameterName,
-				    request.getPathInfo()));
-			}
+				    parameterName)));
+			} else {
+				for (Annotation annot : field.getAnnotations()) {
+					if (validators.containsKey(annot.annotationType())) {
+						validators.get(annot.annotationType()).validate(
+						    wrapper,
+						    annot,
+						    parameterName,
+						    parameterValue);
+					}
 
-			for (Annotation annot : field.getAnnotations()) {
-				if (validators.containsKey(annot.annotationType())) {
-					validators.get(annot.annotationType()).validate(
-					    annot,
-					    parameterName,
-					    parameterValue,
-					    request);
 				}
-
 			}
-
 		}
 
+		// Validate optional parameteres
 		for (String opt : expectParam.optional()) {
 			String parameterValue = request.getParameter(opt);
 			if (parameterValue == null) {
-				throw new MozartException(String.format(
-				    REQUIRED_PARAM_MESSAGE,
-				    opt,
-				    request.getPathInfo()));
+				wrapper.registerError(new Error(opt, String.format(REQUIRED_PARAM_MESSAGE, opt)));
 			}
+		}
+
+		wrapper.setHttpMethod(request.getMethod());
+		wrapper.setPathLocation(request.getPathInfo());
+
+		if (wrapper.hasError()) {
+			throw new MozartException(wrapper);
 		}
 
 	}

@@ -2,26 +2,24 @@ package mozart.common.validator;
 
 import java.lang.annotation.Annotation;
 
-import javax.servlet.http.HttpServletRequest;
 
 import mozart.common.annotation.Max;
-import mozart.common.exception.MozartException;
+import mozart.common.exception.Error;
+import mozart.common.exception.ErrorWrapper;
 
 public class MaxValidator extends Validator {
 
 	@Override
-	public void validate(Annotation annot, String paramName, String value,
-	        HttpServletRequest request) throws Exception {
+	public void validate(ErrorWrapper wrapper, Annotation annot, String paramName, String value) throws Exception {
 
-		isNumber(paramName, value, request);
-
-		Max max = (Max) annot;
-
-		if (Double.valueOf(value) > max.max()) {
-			throw new MozartException(String.format(
-			    "Maximum value for parameter %s is %s",
-			    paramName,
-			    max.max()));
+		if (isNumber(wrapper, paramName, value)) {
+			Max max = (Max) annot;
+			if (Double.valueOf(value) > max.max()) {
+				wrapper.registerError(new Error(paramName, String.format(
+				    "Maximum value for parameter %s is %s",
+				    paramName,
+				    max.max())));
+			}
 		}
 	}
 }

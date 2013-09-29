@@ -2,16 +2,15 @@ package mozart.common.validator;
 
 import java.lang.annotation.Annotation;
 
-import javax.servlet.http.HttpServletRequest;
 
 import mozart.common.annotation.Pattern;
-import mozart.common.exception.MozartException;
+import mozart.common.exception.Error;
+import mozart.common.exception.ErrorWrapper;
 
 public class PatternValidator extends Validator {
 
 	@Override
-	public void validate(Annotation annot, String paramName, String value,
-	        HttpServletRequest request) throws Exception {
+	public void validate(ErrorWrapper wrapper, Annotation annot, String paramName, String value) throws Exception {
 		Pattern pattern = (Pattern) annot;
 
 		boolean result = java.util.regex.Pattern
@@ -20,11 +19,9 @@ public class PatternValidator extends Validator {
 		    .matches();
 
 		if (!result) {
-			throw new MozartException(String.format(
-			    "Parameter %s at URI %s is not match with specified patter (%)",
-			    paramName,
-			    request.getPathInfo(),
-			    pattern.pattern()));
+			wrapper.registerError(new Error(paramName, String.format(
+			    "Parameter is not match with specified patter (%)",
+			    pattern.pattern())));
 		}
 	}
 }
