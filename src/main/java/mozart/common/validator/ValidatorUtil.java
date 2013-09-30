@@ -76,7 +76,6 @@ public class ValidatorUtil {
 		}
 
 		// Validate optional parameteres
-		System.out.println("Optional Param Length : " + expectParam.optional().length);
 		for (String opt : expectParam.optional()) {
 			String parameterValue = request.getParameter(opt);
 			if (!opt.isEmpty() && parameterValue == null) {
