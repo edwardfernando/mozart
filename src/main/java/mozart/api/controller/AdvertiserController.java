@@ -27,7 +27,7 @@ public class AdvertiserController extends Controller<Advertiser> {
 	private ControllerConfig<Advertiser> config;
 
 	@Override
-	@ExpectParam(value = Advertiser.class, optional = { "optional_parameter" })
+	@ExpectParam(Advertiser.class)
 	public Response save(HttpServletRequest request) throws MozartException {
 		service.save(request);
 		return Response.ok().build();
