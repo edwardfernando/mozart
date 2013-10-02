@@ -1,12 +1,12 @@
 package mozart.common.checker;
 
 import java.util.Date;
+import java.util.Set;
 
 public class DateChecker extends Checker {
 
 	@Override
-	public Class<?>[] expectedType() {
-		return new Class<?>[] { Date.class };
+	public Set<Class<?>> supportedTypes() {
+		return addSupportedType(Date.class);
 	}
-
 }

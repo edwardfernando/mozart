@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import mozart.common.annotation.Date;
+import mozart.common.annotation.IntegerOnly;
 
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
@@ -21,6 +22,7 @@ public class AnnotationCheckerUtil {
 	private static Map<Class<? extends Annotation>, Checker> checkers = Maps.newHashMap();
 	static {
 		checkers.put(Date.class, new DateChecker());
+		checkers.put(IntegerOnly.class, new IntegerOnlyChecker());
 	}
 
 	public static void main(String[] args) throws Throwable {
