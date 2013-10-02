@@ -21,7 +21,7 @@ public class AnnotationCheckerUtil {
 		checkers.put(Date.class, new DateChecker());
 	}
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Throwable {
 		System.out.println("Scanning Annotation ...");
 		Set<Class<? extends Object>> classList = new Reflections(
 		                                                         "mozart",
@@ -34,7 +34,7 @@ public class AnnotationCheckerUtil {
 
 			for (Field field : klass.getDeclaredFields()) {
 				for (Annotation annot : field.getAnnotations()) {
-					if (checkers.containsKey(annot)) {
+					if (checkers.containsKey(annot.annotationType())) {
 						checkers.get(annot.annotationType()).check(field, annot);
 					}
 				}
