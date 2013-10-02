@@ -162,6 +162,12 @@
 	  <artifactId>aspectjweaver</artifactId>
 	  <version>1.7.3</version>
 	</dependency>
+	
+	<dependency>
+	  <groupId>org.aspectj</groupId>
+	  <artifactId>aspectjtools</artifactId>
+	  <version>1.7.3</version>
+	</dependency>
 		            
 	<!-- 
 	<dependency>
@@ -187,7 +193,13 @@
 	  <artifactId>joda-time</artifactId>
 	  <version>2.3</version>
 	</dependency>
-	            
+	
+	 <dependency>
+        <groupId>org.reflections</groupId>
+        <artifactId>reflections</artifactId>
+        <version>0.9.9-RC1</version>
+    </dependency>
+            
   </dependencies>
   
   <build>
@@ -203,6 +215,7 @@
           <path>/mozart</path>
         </configuration>
       </plugin>
+      
       <!-- Maven compiler plugin -->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -211,6 +224,23 @@
           <target>1.6</target>
         </configuration>
       </plugin>
+      
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.1</version>
+        <executions>
+            <execution>
+                <phase>compile</phase>
+                <goals>
+                    <goal>java</goal>
+                </goals>
+            </execution>
+        </executions>
+        <configuration>
+            <mainClass>mozart.common.checker.AnnotationCheckerUtil</mainClass>
+        </configuration>
+   	 </plugin>
     </plugins>
   </build>
 </project>

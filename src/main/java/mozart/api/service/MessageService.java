@@ -22,6 +22,11 @@ public class MessageService extends Service<Message> {
 	}
 
 	@Override
+	protected Class<Message> getModel() {
+		return Message.class;
+	}
+
+	@Override
 	public void save(HttpServletRequest request) throws MozartException {
 		Message msg = new Message();
 		msg.setMessage(request.getParameter("message"));

@@ -6,10 +6,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import mozart.api.dao.AbstractDAO;
 import mozart.common.exception.MozartException;
+import mozart.common.transformer.TransformerUtil;
 
 public abstract class Service<T> {
 
 	protected abstract AbstractDAO<T> getDao();
+
+	protected abstract Class<T> getModel();
 
 	public List<T> loadAll() {
 		return getDao().loadAll();
@@ -19,7 +22,7 @@ public abstract class Service<T> {
 		T obj = getDao().loadById(id);
 		if (obj == null) {
 			throw new MozartException("Resource '" +
-			                          getDao().getModel().getSimpleName().toLowerCase() +
+			                          getModel().getSimpleName().toLowerCase() +
 			                          "' with identifier '" +
 			                          id +
 			                          "' is not found");
@@ -37,11 +40,15 @@ public abstract class Service<T> {
 		T obj = getDao().loadById(id);
 		if (obj == null) {
 			throw new MozartException("Resource '" +
-			                          getDao().getModel().getSimpleName().toLowerCase() +
+			                          getModel().getSimpleName().toLowerCase() +
 			                          "' with identifier '" +
 			                          id +
 			                          "' is not found");
 		}
 		getDao().delete(obj);
+	}
+
+	protected T transform(HttpServletRequest request) throws MozartException {
+		return TransformerUtil.instance().fromRequest(request, getModel());
 	}
 }

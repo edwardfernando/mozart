@@ -22,8 +22,13 @@ public class AdvertiserService extends Service<Advertiser> {
 	}
 
 	@Override
-	public void save(HttpServletRequest request) throws MozartException {
-
-		// dao.save(adv);
+	protected Class<Advertiser> getModel() {
+		return Advertiser.class;
 	}
+
+	@Override
+	public void save(HttpServletRequest request) throws MozartException {
+		Advertiser advertiser = transform(request);
+	}
+
 }

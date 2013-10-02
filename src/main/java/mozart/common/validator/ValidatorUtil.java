@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.Min;
 
+import mozart.common.annotation.Date;
 import mozart.common.annotation.Email;
 import mozart.common.annotation.ExpectParam;
 import mozart.common.annotation.HttpParam;
@@ -26,8 +27,9 @@ import com.google.common.collect.Maps;
 public class ValidatorUtil {
 
 	private static ValidatorUtil instance;
+	public static final String REQUIRED_PARAM_MESSAGE = "NOT-FOUND : Parameter %s";
+
 	private static Map<Class<? extends Annotation>, Validator> validators = Maps.newHashMap();
-	public static final String REQUIRED_PARAM_MESSAGE = "Expecting parameter %s";
 	static {
 		validators.put(Email.class, new EmailValidator());
 		validators.put(IntegerOnly.class, new IntegerOnlyValidator());
@@ -38,6 +40,10 @@ public class ValidatorUtil {
 		validators.put(NotNull.class, new NotNullValidator());
 		validators.put(NumberOnly.class, new NumberOnlyValidator());
 		validators.put(Pattern.class, new PatternValidator());
+		validators.put(Date.class, new DateValidator());
+	}
+
+	private ValidatorUtil() {
 	}
 
 	public void validateRequest(ExpectParam expectParam, HttpServletRequest request)
@@ -62,6 +68,7 @@ public class ValidatorUtil {
 				    REQUIRED_PARAM_MESSAGE,
 				    parameterName)));
 			} else {
+				// If not null, then check for annotation
 				for (Annotation annot : field.getAnnotations()) {
 					if (validators.containsKey(annot.annotationType())) {
 						validators.get(annot.annotationType()).validate(
@@ -70,7 +77,6 @@ public class ValidatorUtil {
 						    parameterName,
 						    parameterValue);
 					}
-
 				}
 			}
 		}

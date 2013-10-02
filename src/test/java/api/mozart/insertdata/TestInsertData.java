@@ -8,11 +8,9 @@ import org.jboss.resteasy.core.Dispatcher;
 import org.jboss.resteasy.mock.MockDispatcherFactory;
 import org.jboss.resteasy.mock.MockHttpRequest;
 import org.jboss.resteasy.mock.MockHttpResponse;
-import org.junit.Test;
 
 public class TestInsertData {
 
-	@Test
 	public void testInsertUserData() throws URISyntaxException {
 
 		Dispatcher dispatcher = MockDispatcherFactory.createDispatcher();

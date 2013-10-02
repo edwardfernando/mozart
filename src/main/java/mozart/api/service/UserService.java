@@ -18,4 +18,9 @@ public class UserService extends Service<User> {
 		return dao;
 	}
 
+	@Override
+	protected Class<User> getModel() {
+		return User.class;
+	}
+
 }
