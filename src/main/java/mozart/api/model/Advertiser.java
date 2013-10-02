@@ -3,7 +3,6 @@ package mozart.api.model;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import mozart.common.annotation.Date;
 import mozart.common.annotation.HttpParam;
 
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -22,7 +21,6 @@ public class Advertiser extends Model {
 	private String address;
 
 	@HttpParam
-	@Date
 	private String country;
 
 	private String state;
