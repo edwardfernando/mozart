@@ -27,7 +27,7 @@ import com.google.common.collect.Maps;
 public class ValidatorUtil {
 
 	private static ValidatorUtil instance;
-	public static final String REQUIRED_PARAM_MESSAGE = "NOT-FOUND : Parameter %s";
+	public static final String REQUIRED_PARAM_MESSAGE = "Required parameter %s";
 
 	private static Map<Class<? extends Annotation>, Validator> validators = Maps.newHashMap();
 	static {
