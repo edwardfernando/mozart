@@ -1,5 +1,9 @@
 package mozart.common.transformer;
 
-public interface Transformer<T> {
-	public T transform(String string);
+import java.lang.reflect.Field;
+
+public abstract class Transformer<T> {
+
+	public abstract T transform(Field field, String value);
+
 }
