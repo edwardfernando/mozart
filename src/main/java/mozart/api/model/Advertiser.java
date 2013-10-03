@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @XmlRootElement
 public class Advertiser extends Model {
 
-	@HttpParam
+	@HttpParam("organization_name")
 	private String organizationName;
 
 	@HttpParam
@@ -23,6 +23,7 @@ public class Advertiser extends Model {
 	@HttpParam
 	private String country;
 
+	@HttpParam
 	private String state;
 
 	private String city;
@@ -83,7 +84,6 @@ public class Advertiser extends Model {
 		return state;
 	}
 
-	@XmlElement
 	public void setState(String state) {
 		this.state = state;
 	}
