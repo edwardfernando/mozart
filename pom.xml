@@ -238,7 +238,7 @@
             </execution>
         </executions>
         <configuration>
-            <mainClass>mozart.common.checker.AnnotationCheckerUtil</mainClass>
+            <mainClass>mozart.common.annotation.checker.AnnotationCheckerUtil</mainClass>
         </configuration>
    	 </plugin>
     </plugins>
