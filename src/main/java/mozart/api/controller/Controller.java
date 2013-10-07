@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
@@ -48,6 +49,13 @@ public abstract class Controller<T> {
 	@Path("")
 	public Response save(@Context HttpServletRequest request) throws MozartException {
 		throw new MozartException("Unrecognized POST action for " + request.getPathInfo());
+	}
+
+	@PUT
+	@Path("/{id}")
+	public Response update(@PathParam("id") String id, @Context HttpServletRequest request)
+	        throws MozartException {
+		throw new MozartException("Unrecognized PUT action for " + request.getPathInfo());
 	}
 
 	private class MozartParameterizedType implements ParameterizedType {

@@ -12,5 +12,8 @@ import java.lang.annotation.Target;
 public @interface ExpectParam {
 	String[] optional() default "";
 
-	Class<?> value();
+	Class<?> value() default Ignore.class;
+
+	static class Ignore {
+	}
 }

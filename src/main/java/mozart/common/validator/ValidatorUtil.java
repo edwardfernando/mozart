@@ -49,38 +49,40 @@ public class ValidatorUtil {
 	public void validateRequest(ExpectParam expectParam, HttpServletRequest request)
 	        throws Exception {
 
+		System.out.println(" :: " + request.getPathInfo());
 		ErrorWrapper wrapper = new ErrorWrapper();
 
 		// Validate mandatory parameters
-		for (Field field : expectParam.value().getDeclaredFields()) {
+		if (!expectParam.value().equals(ExpectParam.Ignore.class)) {
+			for (Field field : expectParam.value().getDeclaredFields()) {
 
-			HttpParam httpParam = field.getAnnotation(HttpParam.class);
-			if (httpParam == null) {
-				continue;
-			}
+				HttpParam httpParam = field.getAnnotation(HttpParam.class);
+				if (httpParam == null) {
+					continue;
+				}
 
-			String httpParamValue = httpParam.value();
-			String parameterName = httpParamValue.isEmpty() ? field.getName() : httpParamValue;
-			String parameterValue = request.getParameter(parameterName);
+				String httpParamValue = httpParam.value();
+				String parameterName = httpParamValue.isEmpty() ? field.getName() : httpParamValue;
+				String parameterValue = request.getParameter(parameterName);
 
-			if (parameterValue == null) {
-				wrapper.registerError(new Error(parameterName, String.format(
-				    REQUIRED_PARAM_MESSAGE,
-				    parameterName)));
-			} else {
-				// If not null, then check for annotation
-				for (Annotation annot : field.getAnnotations()) {
-					if (validators.containsKey(annot.annotationType())) {
-						validators.get(annot.annotationType()).validate(
-						    wrapper,
-						    annot,
-						    parameterName,
-						    parameterValue);
+				if (parameterValue == null) {
+					wrapper.registerError(new Error(parameterName, String.format(
+					    REQUIRED_PARAM_MESSAGE,
+					    parameterName)));
+				} else {
+					// If not null, then check for annotation
+					for (Annotation annot : field.getAnnotations()) {
+						if (validators.containsKey(annot.annotationType())) {
+							validators.get(annot.annotationType()).validate(
+							    wrapper,
+							    annot,
+							    parameterName,
+							    parameterValue);
+						}
 					}
 				}
 			}
 		}
-
 		// Validate optional parameteres
 		for (String opt : expectParam.optional()) {
 			String parameterValue = request.getParameter(opt);

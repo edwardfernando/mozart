@@ -36,4 +36,9 @@ public class Error {
 		this.errorMessage = errorMessage;
 	}
 
+	@Override
+	public String toString() {
+		return "Error [parameter=" + parameter + ", errorMessage=" + errorMessage + "]";
+	}
+
 }
