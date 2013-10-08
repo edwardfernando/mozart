@@ -25,9 +25,8 @@ public abstract class AbstractDAO<T> implements Filterable {
 		Session session = getSession();
 		try {
 			session.beginTransaction();
-			return session
-			    .createQuery("from " + getModel().getName() + " domain order by domain.id asc")
-			    .list();
+			return session.createQuery(
+			    "from " + getModel().getName() + " domain order by domain.id asc").list();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			throw SessionFactoryUtils.convertHibernateAccessException(e);
@@ -53,6 +52,7 @@ public abstract class AbstractDAO<T> implements Filterable {
 		try {
 			return (Long) session.save(obj);
 		} catch (HibernateException e) {
+			session.getTransaction().rollback();
 			throw SessionFactoryUtils.convertHibernateAccessException(e);
 		}
 	}
@@ -62,6 +62,7 @@ public abstract class AbstractDAO<T> implements Filterable {
 		try {
 			session.update(obj);
 		} catch (HibernateException e) {
+			session.getTransaction().rollback();
 			throw SessionFactoryUtils.convertHibernateAccessException(e);
 		}
 	}
@@ -71,6 +72,7 @@ public abstract class AbstractDAO<T> implements Filterable {
 		try {
 			session.delete(obj);
 		} catch (HibernateException e) {
+			session.getTransaction().rollback();
 			throw SessionFactoryUtils.convertHibernateAccessException(e);
 		}
 	}
