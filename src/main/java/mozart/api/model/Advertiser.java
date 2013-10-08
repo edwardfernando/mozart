@@ -1,47 +1,64 @@
 package mozart.api.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import mozart.common.annotation.HttpParam;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document
 @XmlRootElement
+@Entity(name = "advertiser")
 public class Advertiser extends Model {
 
+	@Column(name = "organizationName")
 	@HttpParam("organization_name")
 	private String organizationName;
 
 	@HttpParam
-	private String organizationType;
+	@ManyToOne
+	@JoinColumn(name = "advertiser_type_id")
+	private AdvertiserType type;
 
+	@Column
 	@HttpParam
 	private String address;
 
+	@Column
 	@HttpParam
 	private String country;
 
+	@Column
 	@HttpParam
 	private String state;
 
+	@Column
 	private String city;
 
+	@Column
 	private String phoneCountryCode;
 
+	@Column
 	private String phoneAreaCode;
 
+	@Column
 	private String phoneNumber;
 
+	@Column
 	private String faxCountryCode;
 
+	@Column
 	private String faxAreaCode;
 
+	@Column
 	private String faxNumber;
 
+	@Column
 	private String email;
 
+	@Column
 	private String password;
 
 	public String getOrganizationName() {
@@ -53,13 +70,13 @@ public class Advertiser extends Model {
 		this.organizationName = organizationName;
 	}
 
-	public String getOrganizationType() {
-		return organizationType;
+	public AdvertiserType getType() {
+		return type;
 	}
 
 	@XmlElement
-	public void setOrganizationType(String organizationType) {
-		this.organizationType = organizationType;
+	public void setType(AdvertiserType type) {
+		this.type = type;
 	}
 
 	public String getAddress() {
