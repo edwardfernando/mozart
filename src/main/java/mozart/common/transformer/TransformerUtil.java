@@ -43,22 +43,22 @@ public class TransformerUtil {
 				    .value();
 				String value = request.getParameter(parameterName);
 
-				Object fieldValue = null;
-
 				Transformer<?> transformer = transformers.get(field.getType());
 				if (transformer == null) {
-					throw new Exception(String.format(
+					throw new MozartException(String.format(
 					    "Transformer for %s type not found. Parameter : %s",
 					    field.getType().getName(),
 					    parameterName));
 				}
 
-				fieldValue = transformer.transform(field, value);
+				Object fieldValue = transformer.transform(field, value);
 
 				field.setAccessible(true);
 				field.set(newInstance, fieldValue);
 			}
 
+		} catch (MozartException e) {
+			throw e;
 		} catch (Exception e) {
 			throw new MozartException(e);
 		}
@@ -68,6 +68,13 @@ public class TransformerUtil {
 
 	public void registerTransformer(Class<?> type, Transformer<?> transformer) {
 		transformers.put(type, transformer);
+	}
+
+	public void setTransformers(Map<String, Transformer<?>> transformers)
+	        throws ClassNotFoundException {
+		for (Map.Entry<String, Transformer<?>> entry : transformers.entrySet()) {
+			registerTransformer(Class.forName(entry.getKey()), entry.getValue());
+		}
 	}
 
 	public static TransformerUtil instance() {
