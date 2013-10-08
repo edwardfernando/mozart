@@ -1,14 +1,15 @@
 package mozart.common.filter;
 
 import org.hibernate.FlushMode;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.context.internal.ManagedSessionContext;
+import org.hibernate.classic.Session;
+import org.hibernate.context.ManagedSessionContext;
 import org.springframework.dao.DataAccessResourceFailureException;
-import org.springframework.orm.hibernate4.support.OpenSessionInViewFilter;
+import org.springframework.orm.hibernate3.support.OpenSessionInViewFilter;
 
 public class HibernateSessionRequestFilter extends OpenSessionInViewFilter {
 
+	@Override
 	protected Session getSession(SessionFactory sessionFactory)
 	        throws DataAccessResourceFailureException {
 		Session session = sessionFactory.openSession();
@@ -18,6 +19,7 @@ public class HibernateSessionRequestFilter extends OpenSessionInViewFilter {
 		return session;
 	}
 
+	@Override
 	protected void closeSession(org.hibernate.Session session, SessionFactory sessionFactory) {
 		ManagedSessionContext.unbind(sessionFactory);
 		session.flush();

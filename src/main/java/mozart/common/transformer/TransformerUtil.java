@@ -46,9 +46,14 @@ public class TransformerUtil {
 				Object fieldValue = null;
 
 				Transformer<?> transformer = transformers.get(field.getType());
-				if (transformer != null) {
-					fieldValue = transformer.transform(field, value);
+				if (transformer == null) {
+					throw new Exception(String.format(
+					    "Transformer for %s type not found. Parameter : %s",
+					    field.getType().getName(),
+					    parameterName));
 				}
+
+				fieldValue = transformer.transform(field, value);
 
 				field.setAccessible(true);
 				field.set(newInstance, fieldValue);

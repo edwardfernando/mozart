@@ -4,68 +4,84 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import mozart.common.annotation.HttpParam;
 
 @XmlRootElement
+@XmlAccessorType(value = XmlAccessType.FIELD)
 @Entity(name = "advertiser")
 public class Advertiser extends Model {
 
 	@Column(name = "organizationName")
-	@HttpParam("organization_name")
+	@XmlElement
+	@HttpParam
 	private String organizationName;
 
+	@XmlElement
 	@HttpParam
 	@ManyToOne
 	@JoinColumn(name = "advertiser_type_id")
 	private AdvertiserType type;
 
 	@Column
+	@XmlElement
 	@HttpParam
 	private String address;
 
 	@Column
+	@XmlElement
 	@HttpParam
 	private String country;
 
 	@Column
+	@XmlElement
 	@HttpParam
 	private String state;
 
 	@Column
+	@XmlElement
 	private String city;
 
 	@Column
+	@XmlElement
 	private String phoneCountryCode;
 
 	@Column
+	@XmlElement
 	private String phoneAreaCode;
 
 	@Column
+	@XmlElement
 	private String phoneNumber;
 
 	@Column
+	@XmlElement
 	private String faxCountryCode;
 
 	@Column
+	@XmlElement
 	private String faxAreaCode;
 
 	@Column
+	@XmlElement
 	private String faxNumber;
 
 	@Column
+	@XmlElement
 	private String email;
 
 	@Column
+	@XmlElement
 	private String password;
 
 	public String getOrganizationName() {
 		return organizationName;
 	}
 
-	@XmlElement
 	public void setOrganizationName(String organizationName) {
 		this.organizationName = organizationName;
 	}
@@ -74,7 +90,6 @@ public class Advertiser extends Model {
 		return type;
 	}
 
-	@XmlElement
 	public void setType(AdvertiserType type) {
 		this.type = type;
 	}
@@ -83,7 +98,6 @@ public class Advertiser extends Model {
 		return address;
 	}
 
-	@XmlElement
 	public void setAddress(String address) {
 		this.address = address;
 	}
@@ -92,7 +106,6 @@ public class Advertiser extends Model {
 		return country;
 	}
 
-	@XmlElement
 	public void setCountry(String country) {
 		this.country = country;
 	}
@@ -109,7 +122,6 @@ public class Advertiser extends Model {
 		return city;
 	}
 
-	@XmlElement
 	public void setCity(String city) {
 		this.city = city;
 	}
@@ -118,7 +130,6 @@ public class Advertiser extends Model {
 		return phoneCountryCode;
 	}
 
-	@XmlElement
 	public void setPhoneCountryCode(String phoneCountryCode) {
 		this.phoneCountryCode = phoneCountryCode;
 	}
@@ -127,7 +138,6 @@ public class Advertiser extends Model {
 		return phoneAreaCode;
 	}
 
-	@XmlElement
 	public void setPhoneAreaCode(String phoneAreaCode) {
 		this.phoneAreaCode = phoneAreaCode;
 	}
@@ -136,7 +146,6 @@ public class Advertiser extends Model {
 		return phoneNumber;
 	}
 
-	@XmlElement
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
@@ -145,7 +154,6 @@ public class Advertiser extends Model {
 		return faxCountryCode;
 	}
 
-	@XmlElement
 	public void setFaxCountryCode(String faxCountryCode) {
 		this.faxCountryCode = faxCountryCode;
 	}
@@ -154,7 +162,6 @@ public class Advertiser extends Model {
 		return faxAreaCode;
 	}
 
-	@XmlElement
 	public void setFaxAreaCode(String faxAreaCode) {
 		this.faxAreaCode = faxAreaCode;
 	}
@@ -163,7 +170,6 @@ public class Advertiser extends Model {
 		return faxNumber;
 	}
 
-	@XmlElement
 	public void setFaxNumber(String faxNumber) {
 		this.faxNumber = faxNumber;
 	}
@@ -172,7 +178,6 @@ public class Advertiser extends Model {
 		return email;
 	}
 
-	@XmlElement
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -181,7 +186,6 @@ public class Advertiser extends Model {
 		return password;
 	}
 
-	@XmlElement
 	public void setPassword(String password) {
 		this.password = password;
 	}

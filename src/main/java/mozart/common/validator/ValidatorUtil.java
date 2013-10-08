@@ -49,7 +49,6 @@ public class ValidatorUtil {
 	public void validateRequest(ExpectParam expectParam, HttpServletRequest request)
 	        throws Exception {
 
-		System.out.println(" :: " + request.getPathInfo());
 		ErrorWrapper wrapper = new ErrorWrapper();
 
 		// Validate mandatory parameters

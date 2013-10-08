@@ -18,7 +18,7 @@ public abstract class Service<T> {
 		return getDao().loadAll();
 	}
 
-	public T loadById(String id) throws MozartException {
+	public T loadById(Long id) throws MozartException {
 		T obj = getDao().loadById(id);
 		if (obj == null) {
 			throw new MozartException("Resource '" +
@@ -36,7 +36,7 @@ public abstract class Service<T> {
 		                          " in service layer");
 	}
 
-	public void delete(String id) throws MozartException {
+	public void delete(Long id) throws MozartException {
 		T obj = getDao().loadById(id);
 		if (obj == null) {
 			throw new MozartException("Resource '" +

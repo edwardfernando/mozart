@@ -49,22 +49,22 @@
 	    <property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean" p:dataSource-ref="dataSource">
 	    <property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
-				<prop key="hibernate.connection.release_mode">after_transaction</prop>
-				<prop key="hibernate.session_factory_name">sessionFactory</prop>
-				<prop key="hibernate.cache.use_second_level_cache">true</prop>
-				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
-				<prop key="hibernate.cache.use_query_cache">true</prop>
-				
-				<prop key="hibernate.current_session_context_class">managed</prop>
-				<!--
-				<prop key="hibernate.current_session_context_class">thread</prop>
-				--> 
-				<prop key="hibernate.show_sql">false</prop>
-				<prop key="hibernate.format_sql">true</prop>
+					<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+					<prop key="hibernate.connection.release_mode">after_transaction</prop>
+					<prop key="hibernate.session_factory_name">sessionFactory</prop>
+					<prop key="hibernate.cache.use_second_level_cache">true</prop>
+					<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+					<prop key="hibernate.cache.use_query_cache">true</prop>
+					
+					<prop key="hibernate.current_session_context_class">managed</prop>
+					<!--
+					<prop key="hibernate.current_session_context_class">thread</prop>
+					--> 
+					<prop key="hibernate.show_sql">false</prop>
+					<prop key="hibernate.format_sql">true</prop>
 			</props>
 		</property>
       	<property name="dataSource" ref="dataSource" />
@@ -75,7 +75,7 @@
 		</property>
    	</bean>
 
-	<bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager" p:sessionFactory-ref="sessionFactory" />
+	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager" p:sessionFactory-ref="sessionFactory" />
 		
 	<bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
 		<property name="transactionManager">
