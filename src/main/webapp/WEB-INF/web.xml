@@ -22,7 +22,10 @@
     
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-	    <param-value>classpath:mozart-context.xml</param-value>
+	    <param-value>
+	    	classpath:mozart-context.xml, 
+	    	classpath:mozart-datasource.xml
+	    </param-value>
 	</context-param>
 	
 	<context-param>
@@ -34,6 +37,30 @@
         <param-name>resteasy.scan</param-name>
         <param-value>false</param-value>
     </context-param>
+    
+    <filter>
+		<filter-name>CharsetFilter</filter-name>
+		<filter-class>mozart.common.filter.CharsetFilter</filter-class>
+		<init-param>
+			<param-name>requestEncoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>CharsetFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+    
+    <filter>
+		<filter-name>OpenViewInSession</filter-name>
+		<filter-class>mozart.common.filter.HibernateSessionRequestFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>OpenViewInSession</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
     
     <!--  
     // Un-comment this to enable ?format=application/(xml or json) to produce desire data format
