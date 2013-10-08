@@ -16,6 +16,16 @@
 	
 	<aop:aspectj-autoproxy />
 	<bean id="expectsAOP" class="mozart.common.aop.ExpectsAOP"/>			
+	
+	<bean id="transformerUtil" class="mozart.common.transformer.TransformerUtil">
+		<property name="transformers">
+			<map>
+				<entry key="mozart.api.model.AdvertiserType">
+					<bean class="mozart.api.model.transformer.AdvertiserTypeTransformer"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
  
  	<!-- 
  	<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
