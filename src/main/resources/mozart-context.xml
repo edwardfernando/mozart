@@ -17,6 +17,7 @@
 	<aop:aspectj-autoproxy />
 	<bean id="expectsAOP" class="mozart.common.aop.ExpectsAOP"/>			
  
+ 	<!-- 
  	<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
         <property name="host" value="localhost" />
     </bean>
@@ -25,6 +26,7 @@
         <constructor-arg name="databaseName" value="mozart-api" />
     </bean>
  	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+ 	 -->
 
 	<!-- <bean id="contentNegotiationManager"
 		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
