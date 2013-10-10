@@ -6,7 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import mozart.api.dao.AbstractDAO;
 import mozart.common.exception.MozartException;
+import mozart.common.pagination.FilterCriteria;
+import mozart.common.pagination.FilterPaging;
+import mozart.common.pagination.FilterableQuery;
 import mozart.common.transformer.TransformerUtil;
+
+import org.apache.commons.lang3.StringUtils;
 
 public abstract class Service<T> {
 
@@ -14,8 +19,32 @@ public abstract class Service<T> {
 
 	protected abstract Class<T> getModel();
 
-	public List<T> loadAll() {
+	public List<T> loadAll() throws MozartException {
 		return getDao().loadAll();
+	}
+
+	public List<T> loadAll(HttpServletRequest request,
+	        Class<? extends FilterCriteria> filterCriteria,
+	        Class<? extends FilterableQuery> filterableQuery) throws MozartException {
+
+		List<T> list = null;
+
+		if (StringUtils.isBlank(request.getParameter("page"))) {
+			list = loadAll();
+		} else {
+			FilterCriteria filter = TransformerUtil.instance().toFilterCriteria(
+			    request,
+			    filterCriteria);
+
+			FilterableQuery query = TransformerUtil.instance().toFilterableQuery(
+			    filter,
+			    filterableQuery);
+
+			list = new FilterPaging<T>().filter(getDao(), query);
+		}
+
+		return list;
+
 	}
 
 	public T loadById(Long id) throws MozartException {
@@ -49,6 +78,6 @@ public abstract class Service<T> {
 	}
 
 	protected T transform(HttpServletRequest request) throws MozartException {
-		return TransformerUtil.instance().fromRequest(request, getModel());
+		return TransformerUtil.instance().toModel(request, getModel());
 	}
 }

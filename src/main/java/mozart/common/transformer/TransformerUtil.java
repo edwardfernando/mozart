@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import mozart.common.annotation.HttpParam;
 import mozart.common.exception.MozartException;
+import mozart.common.pagination.FilterCriteria;
+import mozart.common.pagination.FilterableQuery;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -28,7 +30,56 @@ public class TransformerUtil {
 	private TransformerUtil() {
 	}
 
-	public <T> T fromRequest(HttpServletRequest request, Class<T> clazz) throws MozartException {
+	public FilterableQuery toFilterableQuery(FilterCriteria filterCriteria,
+	        Class<? extends FilterableQuery> filterableQuery) throws MozartException {
+		FilterableQuery instance = null;
+		try {
+
+			instance = filterableQuery.newInstance();
+			instance.setFilterCriteria(filterCriteria);
+
+		} catch (InstantiationException e) {
+			throw new MozartException(e);
+		} catch (IllegalAccessException e) {
+			throw new MozartException(e);
+		} catch (Exception e) {
+			throw new MozartException(e);
+		}
+		return instance;
+	}
+
+	public FilterCriteria toFilterCriteria(HttpServletRequest request,
+	        Class<? extends FilterCriteria> filterCriteria) throws MozartException {
+		FilterCriteria instance = null;
+		try {
+
+			instance = filterCriteria.newInstance();
+			for (Field field : filterCriteria.getDeclaredFields()) {
+				field.setAccessible(true);
+				field.set(instance, transform(request, field, field.getName()));
+			}
+
+			String page = request.getParameter("page");
+			if (StringUtils.isBlank(page)) {
+				page = "1";
+			}
+
+			instance.setPage(Integer.valueOf(page));
+
+		} catch (MozartException e) {
+			throw e;
+		} catch (InstantiationException e) {
+			throw new MozartException(e);
+		} catch (IllegalAccessException e) {
+			throw new MozartException(e);
+		} catch (Exception e) {
+			throw new MozartException(e);
+		}
+
+		return instance;
+	}
+
+	public <T> T toModel(HttpServletRequest request, Class<T> clazz) throws MozartException {
 		T newInstance = null;
 		try {
 			newInstance = clazz.newInstance();
@@ -41,29 +92,38 @@ public class TransformerUtil {
 
 				String parameterName = StringUtils.isEmpty(httpParam.value()) ? field.getName() : httpParam
 				    .value();
-				String value = request.getParameter(parameterName);
-
-				Transformer<?> transformer = transformers.get(field.getType());
-				if (transformer == null) {
-					throw new MozartException(String.format(
-					    "Transformer for %s type not found. Parameter : %s",
-					    field.getType().getName(),
-					    parameterName));
-				}
-
-				Object fieldValue = transformer.transform(field, value);
 
 				field.setAccessible(true);
-				field.set(newInstance, fieldValue);
+				field.set(newInstance, transform(request, field, parameterName));
 			}
 
 		} catch (MozartException e) {
 			throw e;
+		} catch (InstantiationException e) {
+			throw new MozartException(e);
+		} catch (IllegalAccessException e) {
+			throw new MozartException(e);
 		} catch (Exception e) {
 			throw new MozartException(e);
 		}
 
 		return newInstance;
+	}
+
+	private Object transform(HttpServletRequest request, Field field, String parameterName)
+	        throws MozartException {
+		String value = request.getParameter(parameterName);
+
+		Transformer<?> transformer = transformers.get(field.getType());
+		if (transformer == null) {
+			throw new MozartException(String.format(
+			    "Transformer for %s type not found. Parameter : %s",
+			    field.getType().getName(),
+			    parameterName));
+		}
+
+		Object fieldValue = transformer.transform(field, value);
+		return fieldValue;
 	}
 
 	public void registerTransformer(Class<?> type, Transformer<?> transformer) {

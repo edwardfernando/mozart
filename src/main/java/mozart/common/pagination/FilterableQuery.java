@@ -2,16 +2,40 @@ package mozart.common.pagination;
 
 import java.util.List;
 
-public interface FilterableQuery {
-	public Filterable getFilterable();
+import org.hibernate.Session;
 
-	public void setFilterable(Filterable filterable);
+public abstract class FilterableQuery {
 
-	public FilterCriteria getFilterCriteria();
+	private FilterableDao filterableDao;
+	private Session session;
+	private FilterCriteria filterCriteria;
 
-	public void setFilterCriteria(FilterCriteria filterCriteria);
+	public Session getSession() {
+		return session;
+	}
 
-	public Long count();
+	public void setSession(Session session) {
+		this.session = session;
+	}
 
-	public List execute();
+	public FilterCriteria getFilterCriteria() {
+		return filterCriteria;
+	}
+
+	public void setFilterCriteria(FilterCriteria filterCriteria) {
+		this.filterCriteria = filterCriteria;
+	}
+
+	public FilterableDao getFilterableDao() {
+		return filterableDao;
+	}
+
+	public void setFilterableDao(FilterableDao filterableDao) {
+		this.filterableDao = filterableDao;
+	}
+
+	// public abstract Long count();
+
+	public abstract List<?> execute();
+
 }

@@ -1,53 +1,53 @@
 package mozart.common.pagination;
 
 public class FilterCriteria {
-	protected int max = 10;
-	protected int page = 1;
-	protected int nextPage;
-	protected int prevPage;
-	protected int totalPage;
+	protected Integer max = 10;
+	protected Integer page = 1;
+	protected Integer nextPage;
+	protected Integer prevPage;
+	protected Integer totalPage;
 
-	public int start() {
+	public Integer start() {
 		return (this.page - 1) * this.max;
 	}
 
-	public int getMax() {
+	public Integer getMax() {
 		return max;
 	}
 
-	public void setMax(int max) {
+	public void setMax(Integer max) {
 		this.max = max;
 	}
 
-	public int getPage() {
+	public Integer getPage() {
 		return page;
 	}
 
-	public void setPage(int page) {
+	public void setPage(Integer page) {
 		this.page = page;
 	}
 
-	public int getNextPage() {
+	public Integer getNextPage() {
 		return nextPage;
 	}
 
-	public void setNextPage(int nextPage) {
+	public void setNextPage(Integer nextPage) {
 		this.nextPage = nextPage;
 	}
 
-	public int getPrevPage() {
+	public Integer getPrevPage() {
 		return prevPage;
 	}
 
-	public void setPrevPage(int prevPage) {
+	public void setPrevPage(Integer prevPage) {
 		this.prevPage = prevPage;
 	}
 
-	public int getTotalPage() {
+	public Integer getTotalPage() {
 		return totalPage;
 	}
 
-	public void setTotalPage(int totalPage) {
+	public void setTotalPage(Integer totalPage) {
 		this.totalPage = totalPage;
 	}
 

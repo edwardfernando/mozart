@@ -25,11 +25,8 @@ public abstract class Controller<T> {
 
 	@GET
 	@Path("")
-	public Response loadAll() {
-		GenericEntity<List<T>> ge = new GenericEntity<List<T>>(
-		                                                       getConfig().getService().loadAll(),
-		                                                       new MozartParameterizedType());
-		return Response.ok(ge).build();
+	public Response loadAll(@Context HttpServletRequest request) throws MozartException {
+		return Response.ok(toGenericEntity(getConfig().getService().loadAll())).build();
 	}
 
 	@GET
@@ -78,4 +75,9 @@ public abstract class Controller<T> {
 	}
 
 	protected abstract ControllerConfig<T> getConfig();
+
+	protected GenericEntity<List<T>> toGenericEntity(List<T> list) {
+		GenericEntity<List<T>> ge = new GenericEntity<List<T>>(list, new MozartParameterizedType());
+		return ge;
+	}
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import mozart.common.db.util.HibernateUtil;
 import mozart.common.exception.MozartException;
-import mozart.common.pagination.Filterable;
+import mozart.common.pagination.FilterableDao;
 import mozart.common.pagination.FilterableQuery;
 
 import org.hibernate.HibernateException;
@@ -12,7 +12,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.SessionFactoryUtils;
 
-public abstract class AbstractDAO<T> implements Filterable {
+public abstract class AbstractDAO<T> implements FilterableDao {
 
 	protected abstract Class<T> getModel();
 
@@ -28,7 +28,6 @@ public abstract class AbstractDAO<T> implements Filterable {
 			return session.createQuery(
 			    "from " + getModel().getName() + " domain order by domain.id asc").list();
 		} catch (HibernateException e) {
-			session.getTransaction().rollback();
 			throw SessionFactoryUtils.convertHibernateAccessException(e);
 		}
 	}
@@ -133,20 +132,19 @@ public abstract class AbstractDAO<T> implements Filterable {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> filter(FilterableQuery query) {
-		query.setFilterable(this);
+	public List<?> filter(FilterableQuery query) {
+		query.setFilterableDao(this);
 		return query.execute();
 	}
 
-	@Override
-	public Long count(FilterableQuery query) {
-		query.setFilterable(this);
-		return query.count();
-	}
+	// @Override
+	// public Long count(FilterableQuery query) {
+	// query.setFilterableDao(this);
+	// return query.count();
+	// }
 
-	private void setParameters(Query query, Object parameters[]) throws MozartException {
+	private void setParameters(Query query, Object... parameters) throws MozartException {
 		if (parameters == null || parameters.length == 0) {
 			return;
 		}

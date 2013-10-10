@@ -1,19 +1,24 @@
 package mozart.api.controller.advertiser;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import mozart.api.controller.Controller;
 import mozart.api.model.Advertiser;
+import mozart.api.model.query.AdvertiserQuery;
 import mozart.api.service.advertiser.AdvertiserService;
 import mozart.common.annotation.ExpectParam;
 import mozart.common.config.ControllerConfig;
 import mozart.common.exception.MozartException;
+import mozart.common.pagination.FilterCriteria;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,6 +39,15 @@ public class AdvertiserController extends Controller<Advertiser> {
 	public Response save(HttpServletRequest request) throws MozartException {
 		service.save(request);
 		return Response.ok().build();
+	}
+
+	@Override
+	public Response loadAll(HttpServletRequest request) throws MozartException {
+		GenericEntity<List<Advertiser>> ge = toGenericEntity(service.loadAll(
+		    request,
+		    FilterCriteria.class,
+		    AdvertiserQuery.class));
+		return Response.ok(ge).build();
 	}
 
 	@POST

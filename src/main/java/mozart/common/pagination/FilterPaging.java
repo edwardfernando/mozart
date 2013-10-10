@@ -2,15 +2,17 @@ package mozart.common.pagination;
 
 import java.util.List;
 
-public class FilterPaging {
+public class FilterPaging<T> {
 
-	public static synchronized List<Object> filter(Filterable dao, FilterableQuery query) {
+	public List<T> filter(FilterableDao dao, FilterableQuery query) {
 		int totalData = 0;
 		int totalPage = 1;
 		int nextPage = 1;
 		int prevPage = 1;
 
-		totalData = dao.count(query).intValue();
+		List<T> list = dao.filter(query);
+		// totalData = dao.count(query).intValue();
+		totalData = list.size();
 
 		if (totalData > 0) {
 			if (totalData % query.getFilterCriteria().getMax() == 0) {
@@ -35,7 +37,9 @@ public class FilterPaging {
 		query.getFilterCriteria().setPrevPage(prevPage);
 		query.getFilterCriteria().setTotalPage(totalPage);
 
-		return dao.filter(query);
+		// return dao.filter(query);
+
+		return list;
 	}
 
 }

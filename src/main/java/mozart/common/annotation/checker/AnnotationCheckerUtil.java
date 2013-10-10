@@ -7,6 +7,7 @@ import java.util.Set;
 
 import mozart.common.annotation.Date;
 
+import org.apache.commons.lang3.StringUtils;
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
 import org.reflections.util.ClasspathHelper;
@@ -61,6 +62,10 @@ public class AnnotationCheckerUtil {
 	}
 
 	public static void main(String[] args) throws Throwable {
+		if (StringUtils.isBlank(PACKAGE)) {
+			System.out.println("No package to scan. Skip scanning.");
+			return;
+		}
 		System.out.println("Scanning Annotation ...");
 		AnnotationCheckerUtil.instance().check();
 	}
