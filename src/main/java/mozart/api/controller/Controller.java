@@ -15,8 +15,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
 
-import mozart.common.config.ControllerConfig;
-import mozart.common.exception.MozartException;
+import mozart.api.config.ControllerConfig;
+import mozart.core.exception.MozartException;
 
 import org.springframework.stereotype.Component;
 

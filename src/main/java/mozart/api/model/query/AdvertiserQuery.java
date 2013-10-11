@@ -3,8 +3,8 @@ package mozart.api.model.query;
 import java.util.List;
 
 import mozart.api.dao.AdvertiserDAO;
-import mozart.common.pagination.FilterCriteria;
-import mozart.common.pagination.FilterableQuery;
+import mozart.core.pagination.FilterCriteria;
+import mozart.core.pagination.FilterableQuery;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -26,7 +26,7 @@ public class AdvertiserQuery extends FilterableQuery {
 		query.setFirstResult(filter.start());
 		query.setMaxResults(filter.getMax());
 
-		return (List<?>) dao.execList(query, session);
+		return (List<?>) dao.execList(query);
 	}
 
 }

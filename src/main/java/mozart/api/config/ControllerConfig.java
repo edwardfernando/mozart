@@ -1,4 +1,4 @@
-package mozart.common.config;
+package mozart.api.config;
 
 import java.lang.reflect.Type;
 

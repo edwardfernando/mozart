@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import mozart.api.dao.AbstractDAO;
-import mozart.common.exception.MozartException;
-import mozart.common.pagination.FilterCriteria;
-import mozart.common.pagination.FilterPaging;
-import mozart.common.pagination.FilterableQuery;
-import mozart.common.transformer.TransformerUtil;
+import mozart.core.db.AbstractDAO;
+import mozart.core.exception.MozartException;
+import mozart.core.pagination.FilterCriteria;
+import mozart.core.pagination.FilterPaging;
+import mozart.core.pagination.FilterableQuery;
+import mozart.core.transformer.TransformerUtil;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -23,6 +23,7 @@ public abstract class Service<T> {
 		return getDao().loadAll();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<T> loadAll(HttpServletRequest request,
 	        Class<? extends FilterCriteria> filterCriteria,
 	        Class<? extends FilterableQuery> filterableQuery) throws MozartException {
@@ -40,7 +41,7 @@ public abstract class Service<T> {
 			    filter,
 			    filterableQuery);
 
-			list = new FilterPaging<T>().filter(getDao(), query);
+			list = (List<T>) FilterPaging.filter(getDao(), query);
 		}
 
 		return list;

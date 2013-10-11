@@ -17,6 +17,13 @@
   </properties>
   
   <dependencies>
+  
+  	<dependency>
+      <groupId>mozart.api</groupId>
+      <artifactId>mozart-core</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+  
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -308,7 +315,7 @@
             </execution>
         </executions>
         <configuration>
-            <mainClass>mozart.common.annotation.checker.AnnotationCheckerUtil</mainClass>
+            <mainClass>mozart.core.annotation.checker.AnnotationCheckerUtil</mainClass>
         </configuration>
    	 </plugin>
     </plugins>

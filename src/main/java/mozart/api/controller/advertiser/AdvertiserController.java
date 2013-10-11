@@ -11,14 +11,14 @@ import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import mozart.api.config.ControllerConfig;
 import mozart.api.controller.Controller;
 import mozart.api.model.Advertiser;
 import mozart.api.model.query.AdvertiserQuery;
 import mozart.api.service.advertiser.AdvertiserService;
-import mozart.common.annotation.ExpectParam;
-import mozart.common.config.ControllerConfig;
-import mozart.common.exception.MozartException;
-import mozart.common.pagination.FilterCriteria;
+import mozart.core.annotation.ExpectParam;
+import mozart.core.exception.MozartException;
+import mozart.core.pagination.FilterCriteria;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

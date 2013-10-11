@@ -15,9 +15,9 @@
 	<context:annotation-config/> 
 	
 	<aop:aspectj-autoproxy />
-	<bean id="expectsAOP" class="mozart.common.aop.ExpectsAOP"/>			
+	<bean id="expectsAOP" class="mozart.core.aop.ExpectsAOP"/>			
 	
-	<bean id="transformerUtil" class="mozart.common.transformer.TransformerUtil">
+	<bean id="transformerUtil" class="mozart.core.transformer.TransformerUtil">
 		<property name="transformers">
 			<map>
 				<entry key="mozart.api.model.AdvertiserType">

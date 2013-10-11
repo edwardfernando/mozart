@@ -1,6 +1,7 @@
 package mozart.api.dao;
 
 import mozart.api.model.User;
+import mozart.core.db.AbstractDAO;
 
 import org.springframework.stereotype.Component;
 

@@ -45,7 +45,7 @@
         <property name="minEvictableIdleTimeMillis" value="60000"/>
 	</bean>
 
-	<bean class="mozart.common.db.util.HibernateUtil">
+	<bean class="mozart.core.db.HibernateUtil">
 	    <property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 

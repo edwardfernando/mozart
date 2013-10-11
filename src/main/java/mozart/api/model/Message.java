@@ -7,6 +7,8 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import mozart.core.db.model.Model;
+
 @XmlRootElement
 public class Message extends Model {
 

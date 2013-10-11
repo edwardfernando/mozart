@@ -2,10 +2,10 @@ package mozart.api.service;
 
 import javax.servlet.http.HttpServletRequest;
 
-import mozart.api.dao.AbstractDAO;
 import mozart.api.dao.MessageDAO;
 import mozart.api.model.Message;
-import mozart.common.exception.MozartException;
+import mozart.core.db.AbstractDAO;
+import mozart.core.exception.MozartException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

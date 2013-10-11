@@ -4,8 +4,8 @@ import java.lang.reflect.Field;
 
 import mozart.api.dao.AdvertiserTypeDAO;
 import mozart.api.model.AdvertiserType;
-import mozart.common.exception.MozartException;
-import mozart.common.transformer.Transformer;
+import mozart.core.exception.MozartException;
+import mozart.core.transformer.Transformer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

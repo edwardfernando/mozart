@@ -1,8 +1,8 @@
 package mozart.api.service;
 
-import mozart.api.dao.AbstractDAO;
 import mozart.api.dao.UserDAO;
 import mozart.api.model.User;
+import mozart.core.db.AbstractDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

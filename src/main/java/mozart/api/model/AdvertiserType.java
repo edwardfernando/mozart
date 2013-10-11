@@ -11,6 +11,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import mozart.core.db.model.Model;
+
 @Entity(name = "advertiser_type")
 @XmlRootElement
 @XmlAccessorType(value = XmlAccessType.FIELD)
