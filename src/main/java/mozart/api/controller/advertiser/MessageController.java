@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response;
 import mozart.api.config.ControllerConfig;
 import mozart.api.controller.Controller;
 import mozart.api.model.Message;
-import mozart.api.service.MessageService;
+import mozart.api.service.advertiser.MessageService;
 import mozart.api.wrapper.MessageWrapper;
 import mozart.core.annotation.ExpectParam;
 import mozart.core.exception.MozartException;
