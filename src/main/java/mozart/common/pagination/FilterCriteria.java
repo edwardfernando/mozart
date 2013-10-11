@@ -1,10 +1,15 @@
 package mozart.common.pagination;
 
 public class FilterCriteria {
-	protected Integer max = 10;
-	protected Integer page = 1;
+
+	protected Integer max;
+
+	protected Integer page;
+
 	protected Integer nextPage;
+
 	protected Integer prevPage;
+
 	protected Integer totalPage;
 
 	public Integer start() {

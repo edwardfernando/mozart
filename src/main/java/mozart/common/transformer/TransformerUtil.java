@@ -64,6 +64,7 @@ public class TransformerUtil {
 				page = "1";
 			}
 
+			instance.setMax(10);
 			instance.setPage(Integer.valueOf(page));
 
 		} catch (MozartException e) {
@@ -112,6 +113,7 @@ public class TransformerUtil {
 
 	private Object transform(HttpServletRequest request, Field field, String parameterName)
 	        throws MozartException {
+
 		String value = request.getParameter(parameterName);
 
 		Transformer<?> transformer = transformers.get(field.getType());

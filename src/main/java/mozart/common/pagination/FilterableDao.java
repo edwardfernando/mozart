@@ -2,6 +2,8 @@ package mozart.common.pagination;
 
 import java.util.List;
 
+import mozart.common.exception.MozartException;
+
 /**
  * 
  * @author Edward Fernando
@@ -9,7 +11,6 @@ import java.util.List;
  */
 public interface FilterableDao {
 
-	public <T> List<T> filter(FilterableQuery query);
+	public <T> List<T> filter(FilterableQuery query) throws MozartException;
 
-	// public Long count(FilterableQuery query);
 }

@@ -6,7 +6,7 @@ import javax.ws.rs.core.MediaType;
 
 import mozart.api.controller.Controller;
 import mozart.api.model.User;
-import mozart.api.service.UserService;
+import mozart.api.service.advertiser.UserService;
 import mozart.common.config.ControllerConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;

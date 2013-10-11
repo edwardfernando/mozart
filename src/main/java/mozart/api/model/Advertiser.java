@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -13,7 +14,8 @@ import mozart.common.annotation.HttpParam;
 
 @XmlRootElement
 @XmlAccessorType(value = XmlAccessType.FIELD)
-@Entity(name = "advertiser")
+@Entity
+@Table(name = "advertiser")
 public class Advertiser extends Model {
 
 	@Column(name = "organizationName")

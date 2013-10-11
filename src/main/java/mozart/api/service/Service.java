@@ -23,6 +23,7 @@ public abstract class Service<T> {
 		return getDao().loadAll();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<T> loadAll(HttpServletRequest request,
 	        Class<? extends FilterCriteria> filterCriteria,
 	        Class<? extends FilterableQuery> filterableQuery) throws MozartException {
@@ -40,7 +41,7 @@ public abstract class Service<T> {
 			    filter,
 			    filterableQuery);
 
-			list = new FilterPaging<T>().filter(getDao(), query);
+			list = (List<T>) FilterPaging.filter(getDao(), query);
 		}
 
 		return list;

@@ -116,7 +116,7 @@ public abstract class AbstractDAO<T> implements FilterableDao {
 		}
 	}
 
-	public Object execUnique(Query query, Session session) {
+	public Object execUnique(Query query) {
 		try {
 			return query.uniqueResult();
 		} catch (HibernateException e) {
@@ -124,7 +124,7 @@ public abstract class AbstractDAO<T> implements FilterableDao {
 		}
 	}
 
-	public Object execList(Query query, Session session) {
+	public Object execList(Query query) {
 		try {
 			return query.list();
 		} catch (HibernateException e) {
@@ -133,8 +133,9 @@ public abstract class AbstractDAO<T> implements FilterableDao {
 	}
 
 	@Override
-	public List<?> filter(FilterableQuery query) {
+	public List<?> filter(FilterableQuery query) throws MozartException {
 		query.setFilterableDao(this);
+		query.setSession(getSession());
 		return query.execute();
 	}
 
