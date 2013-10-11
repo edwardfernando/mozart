@@ -1,10 +1,11 @@
-package mozart.api.service;
+package mozart.api.service.advertiser;
 
 import javax.servlet.http.HttpServletRequest;
 
 import mozart.api.dao.AbstractDAO;
 import mozart.api.dao.MessageDAO;
 import mozart.api.model.Message;
+import mozart.api.service.Service;
 import mozart.common.exception.MozartException;
 
 import org.springframework.beans.factory.annotation.Autowired;

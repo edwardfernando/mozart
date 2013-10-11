@@ -2,6 +2,8 @@ package mozart.common.pagination;
 
 import java.util.List;
 
+import mozart.common.exception.MozartException;
+
 import org.hibernate.Session;
 
 public abstract class FilterableQuery {
@@ -34,8 +36,6 @@ public abstract class FilterableQuery {
 		this.filterableDao = filterableDao;
 	}
 
-	// public abstract Long count();
-
-	public abstract List<?> execute();
+	public abstract List<?> execute() throws MozartException;
 
 }

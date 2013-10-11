@@ -77,7 +77,6 @@ public abstract class Controller<T> {
 	protected abstract ControllerConfig<T> getConfig();
 
 	protected GenericEntity<List<T>> toGenericEntity(List<T> list) {
-		GenericEntity<List<T>> ge = new GenericEntity<List<T>>(list, new MozartParameterizedType());
-		return ge;
+		return new GenericEntity<List<T>>(list, new MozartParameterizedType());
 	}
 }

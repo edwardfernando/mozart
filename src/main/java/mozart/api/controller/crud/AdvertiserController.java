@@ -1,13 +1,10 @@
-package mozart.api.controller.advertiser;
-
-import java.util.List;
+package mozart.api.controller.crud;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -24,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@Path("/advertiser")
+@Path("/crud/advertiser")
 @Produces(MediaType.APPLICATION_JSON)
 public class AdvertiserController extends Controller<Advertiser> {
 
@@ -43,11 +40,12 @@ public class AdvertiserController extends Controller<Advertiser> {
 
 	@Override
 	public Response loadAll(HttpServletRequest request) throws MozartException {
-		GenericEntity<List<Advertiser>> ge = toGenericEntity(service.loadAll(
-		    request,
-		    FilterCriteria.class,
-		    AdvertiserQuery.class));
-		return Response.ok(ge).build();
+		return Response
+		    .ok(
+		        toGenericEntity(service.loadAll(
+		            request,
+		            FilterCriteria.class,
+		            AdvertiserQuery.class))).build();
 	}
 
 	@POST
