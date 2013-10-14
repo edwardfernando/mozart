@@ -11,12 +11,12 @@ import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import mozart.api.config.ControllerConfig;
-import mozart.api.controller.Controller;
 import mozart.api.model.Advertiser;
 import mozart.api.model.query.AdvertiserQuery;
 import mozart.api.service.advertiser.AdvertiserService;
 import mozart.core.annotation.ExpectParam;
+import mozart.core.api.Controller;
+import mozart.core.api.config.ControllerConfig;
 import mozart.core.exception.MozartException;
 import mozart.core.pagination.FilterCriteria;
 

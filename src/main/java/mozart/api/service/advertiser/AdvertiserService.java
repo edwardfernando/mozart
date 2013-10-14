@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import mozart.api.dao.AdvertiserDAO;
 import mozart.api.model.Advertiser;
-import mozart.api.service.Service;
+import mozart.core.api.Service;
 import mozart.core.db.AbstractDAO;
 import mozart.core.exception.MozartException;
 

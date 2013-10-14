@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import mozart.core.annotation.HttpParam;
-import mozart.core.db.model.Model;
+import mozart.core.api.Model;
 
 @XmlRootElement
 @XmlAccessorType(value = XmlAccessType.FIELD)

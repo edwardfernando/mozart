@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import mozart.core.db.model.Model;
+import mozart.core.api.Model;
 
 @XmlRootElement
 public class MessageFeedback extends Model {

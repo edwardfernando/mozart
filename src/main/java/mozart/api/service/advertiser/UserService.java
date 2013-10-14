@@ -2,7 +2,7 @@ package mozart.api.service.advertiser;
 
 import mozart.api.dao.UserDAO;
 import mozart.api.model.User;
-import mozart.api.service.Service;
+import mozart.core.api.Service;
 import mozart.core.db.AbstractDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -6,12 +6,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import mozart.api.config.ControllerConfig;
-import mozart.api.controller.Controller;
 import mozart.api.model.Message;
 import mozart.api.service.advertiser.MessageService;
 import mozart.api.wrapper.MessageWrapper;
 import mozart.core.annotation.ExpectParam;
+import mozart.core.api.Controller;
+import mozart.core.api.config.ControllerConfig;
 import mozart.core.exception.MozartException;
 
 import org.springframework.beans.factory.annotation.Autowired;
