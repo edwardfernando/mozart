@@ -1,5 +1,7 @@
 #mozart
 
+<i>RESTful API based on Java cooked using REST easy framework, mixed with one tea spoon of spring framework, 10 grams of aspectJ, hibernate, and other secret recipes. Mixed with love and hopefully it will taste good.</i>
+
 <b>Prerequisites</b>
 
 * Pre-installed JDK version > 1.6 
