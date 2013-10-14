@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import mozart.core.annotation.HttpParam;
 import mozart.core.api.Model;
 
 @Entity(name = "advertiser_type")
@@ -20,6 +21,7 @@ public class AdvertiserType extends Model {
 
 	@XmlElement
 	@Column(name = "name")
+	@HttpParam("advertiser_type_name")
 	private String name;
 
 	@XmlTransient
