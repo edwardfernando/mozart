@@ -20,6 +20,7 @@ import mozart.core.api.config.ControllerConfig;
 import mozart.core.exception.MozartException;
 import mozart.core.pagination.FilterCriteria;
 
+import org.jboss.resteasy.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -43,6 +44,8 @@ public class AdvertiserController extends Controller<Advertiser> {
 
 	@Override
 	public Response loadAll(HttpServletRequest request) throws MozartException {
+
+		Logger.getLogger(this.getClass()).info("TEST DOANG");
 		GenericEntity<List<Advertiser>> ge = toGenericEntity(service.loadAll(
 		    request,
 		    FilterCriteria.class,
