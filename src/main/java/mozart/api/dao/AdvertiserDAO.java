@@ -2,6 +2,7 @@ package mozart.api.dao;
 
 import mozart.api.model.Advertiser;
 import mozart.core.db.AbstractDAO;
+import mozart.core.exception.MozartException;
 
 import org.springframework.stereotype.Component;
 
@@ -13,4 +14,10 @@ public class AdvertiserDAO extends AbstractDAO<Advertiser> {
 		return Advertiser.class;
 	}
 
+	public Advertiser load(String username, String password) throws MozartException {
+		return (Advertiser) execUnique(
+		    "from Advertiser a where a.email = ?  and a.password = ?",
+		    username,
+		    password);
+	}
 }

@@ -34,9 +34,15 @@ public class AdvertiserService extends Service<Advertiser> {
 	}
 
 	public Advertiser login(HttpServletRequest request) throws MozartException {
-		String username = request.getParameter("username");
+		String username = request.getParameter("email");
 		String password = request.getParameter("password");
 
-		return null;
+		Advertiser adv = dao.load(username, password);
+
+		if (adv == null) {
+			throw new MozartException("Not found / wrong password");
+		}
+
+		return adv;
 	}
 }
