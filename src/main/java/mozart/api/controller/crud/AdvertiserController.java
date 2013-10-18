@@ -52,7 +52,7 @@ public class AdvertiserController extends Controller<Advertiser> {
 
 	@POST
 	@Path("/login")
-	@ExpectParam(optional = { "username", "password" })
+	@ExpectParam(optional = { "email", "password" })
 	public Response login(@Context HttpServletRequest request) throws MozartException {
 		return Response.ok(service.login(request)).build();
 	}
