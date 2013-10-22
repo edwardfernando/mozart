@@ -7,7 +7,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import mozart.api.model.AdvertiserType;
-import mozart.api.service.advertiser.AdvertiserTypeService;
+import mozart.api.service.AdvertiserTypeService;
 import mozart.core.annotation.ExpectParam;
 import mozart.core.api.Controller;
 import mozart.core.api.config.ControllerConfig;

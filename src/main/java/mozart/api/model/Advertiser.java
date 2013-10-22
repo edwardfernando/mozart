@@ -19,7 +19,7 @@ import mozart.core.api.Model;
 @Table(name = "advertiser")
 public class Advertiser extends Model {
 
-	@Column(name = "organizationName")
+	@Column
 	@XmlElement
 	@HttpParam
 	private String organizationName;

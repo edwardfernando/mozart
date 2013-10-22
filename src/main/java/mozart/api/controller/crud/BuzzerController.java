@@ -6,9 +6,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import mozart.api.model.Message;
-import mozart.api.service.MessageService;
-import mozart.api.wrapper.MessageWrapper;
+import mozart.api.model.Buzzer;
+import mozart.api.service.BuzzerService;
 import mozart.core.annotation.ExpectParam;
 import mozart.core.api.Controller;
 import mozart.core.api.config.ControllerConfig;
@@ -18,31 +17,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@Path("/c/message")
+@Path("/c/buzzer")
 @Produces(MediaType.APPLICATION_JSON)
-public class MessageController extends Controller<Message> {
+public class BuzzerController extends Controller<Buzzer> {
 
 	@Autowired
-	private MessageService service;
+	private BuzzerService service;
 
 	@Autowired
-	private ControllerConfig<Message> config;
+	private ControllerConfig<Buzzer> config;
 
 	@Override
-	public Response loadAll(HttpServletRequest request) throws MozartException {
-		return Response.ok(new MessageWrapper(service.loadAll())).build();
+	protected ControllerConfig<Buzzer> getConfig() {
+		return config.build(service, Buzzer.class);
 	}
 
 	@Override
-	@ExpectParam(Message.class)
+	@ExpectParam(Buzzer.class)
 	public Response save(HttpServletRequest request) throws MozartException {
 		service.save(request);
 		return Response.ok().build();
 	}
-
-	@Override
-	protected ControllerConfig<Message> getConfig() {
-		return config.build(service, Message.class);
-	}
-
 }

@@ -5,7 +5,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import mozart.api.model.User;
-import mozart.api.service.advertiser.UserService;
+import mozart.api.service.UserService;
 import mozart.core.api.Controller;
 import mozart.core.api.config.ControllerConfig;
 
