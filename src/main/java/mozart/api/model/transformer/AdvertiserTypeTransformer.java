@@ -17,14 +17,7 @@ public class AdvertiserTypeTransformer extends Transformer<AdvertiserType> {
 	@Override
 	public AdvertiserType transform(Field field, String value) throws MozartException {
 		AdvertiserType type = dao.loadById(Long.valueOf(value));
-
-		if (type == null) {
-			throw new MozartException(
-			                          String
-			                              .format("AdvertiserType with id %s is not found", value));
-		}
-
-		return type;
+		return validate(type, field, value);
 	}
 
 }
