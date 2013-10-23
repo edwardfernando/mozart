@@ -1,6 +1,6 @@
 #mozart
 
-<i>RESTful Java API based cooked using REST easy framework, mixed with one tea spoon of spring framework, 10 grams of aspectJ, hibernate, and other secret recipes. Mixed with love and hopefully it will taste good.</i>
+<i>RESTful Java API, cooked using REST easy framework, mixed with one tea spoon of spring framework, 10 grams of aspectJ, hibernate, and other secret recipes. Mixed with love and hopefully it will taste good.</i>
 
 <b>Prerequisites</b>
 
