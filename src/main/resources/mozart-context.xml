@@ -23,6 +23,10 @@
 				<entry key="mozart.api.model.AdvertiserType">
 					<bean class="mozart.api.model.transformer.AdvertiserTypeTransformer"/>
 				</entry>
+				
+				<entry key="mozart.api.model.Buzzer">
+					<bean class="mozart.api.model.transformer.BuzzerTransformer"/>
+				</entry>
 			</map>
 		</property>
 	</bean>
