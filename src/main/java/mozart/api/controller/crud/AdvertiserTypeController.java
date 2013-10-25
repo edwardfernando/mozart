@@ -24,12 +24,9 @@ public class AdvertiserTypeController extends Controller<AdvertiserType> {
 	@Autowired
 	private AdvertiserTypeService service;
 
-	@Autowired
-	private ControllerConfig<AdvertiserType> config;
-
 	@Override
 	protected ControllerConfig<AdvertiserType> getConfig() {
-		return config.build(service, AdvertiserType.class);
+		return new ControllerConfig<AdvertiserType>().build(service, AdvertiserType.class);
 	}
 
 	@Override

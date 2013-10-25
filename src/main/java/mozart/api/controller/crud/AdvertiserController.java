@@ -29,9 +29,6 @@ public class AdvertiserController extends Controller<Advertiser> {
 	@Autowired
 	private AdvertiserService service;
 
-	@Autowired
-	private ControllerConfig<Advertiser> config;
-
 	@Override
 	@ExpectParam(Advertiser.class)
 	public Response save(HttpServletRequest request) throws MozartException {
@@ -50,7 +47,7 @@ public class AdvertiserController extends Controller<Advertiser> {
 
 	@Override
 	protected ControllerConfig<Advertiser> getConfig() {
-		return config.build(service, Advertiser.class);
+		return new ControllerConfig<Advertiser>().build(service, Advertiser.class);
 	}
 
 }

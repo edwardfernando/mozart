@@ -1,14 +1,18 @@
 package mozart.api.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import mozart.core.annotation.HttpParam;
 import mozart.core.api.Model;
@@ -80,6 +84,10 @@ public class Advertiser extends Model {
 	@Column
 	@XmlElement
 	private String password;
+
+	@XmlTransient
+	@OneToMany(mappedBy = "advertiser")
+	private Set<Campaign> campaigns;
 
 	public String getOrganizationName() {
 		return organizationName;
@@ -191,6 +199,14 @@ public class Advertiser extends Model {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Set<Campaign> getCampaigns() {
+		return campaigns;
+	}
+
+	public void setCampaigns(Set<Campaign> campaigns) {
+		this.campaigns = campaigns;
 	}
 
 }

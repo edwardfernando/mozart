@@ -24,12 +24,9 @@ public class BankAccountController extends Controller<BankAccount> {
 	@Autowired
 	private BankAccountService service;
 
-	@Autowired
-	private ControllerConfig<BankAccount> config;
-
 	@Override
 	protected ControllerConfig<BankAccount> getConfig() {
-		return config.build(service, BankAccount.class);
+		return new ControllerConfig<BankAccount>().build(service, BankAccount.class);
 	}
 
 	@Override

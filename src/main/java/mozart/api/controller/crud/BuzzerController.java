@@ -24,12 +24,9 @@ public class BuzzerController extends Controller<Buzzer> {
 	@Autowired
 	private BuzzerService service;
 
-	@Autowired
-	private ControllerConfig<Buzzer> config;
-
 	@Override
 	protected ControllerConfig<Buzzer> getConfig() {
-		return config.build(service, Buzzer.class);
+		return new ControllerConfig<Buzzer>().build(service, Buzzer.class);
 	}
 
 	@Override
