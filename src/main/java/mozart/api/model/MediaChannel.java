@@ -1,8 +1,17 @@
 package mozart.api.model;
 
-public class MediaChannel {
+import mozart.core.api.Model;
 
-	private String id;
+public class MediaChannel extends Model {
+
 	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 }
