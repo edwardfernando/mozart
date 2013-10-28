@@ -27,12 +27,6 @@ public class AdvertiserService extends Service<Advertiser> {
 		return Advertiser.class;
 	}
 
-	@Override
-	public void save(HttpServletRequest request) throws MozartException {
-		Advertiser advertiser = transform(request);
-		dao.save(advertiser);
-	}
-
 	public Advertiser login(HttpServletRequest request) throws MozartException {
 		String username = request.getParameter("email");
 		String password = request.getParameter("password");
