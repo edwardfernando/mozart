@@ -11,10 +11,12 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import mozart.core.annotation.Email;
 import mozart.core.annotation.HttpParam;
 import mozart.core.annotation.IntegerOnly;
+import mozart.core.annotation.Length;
 import mozart.core.api.Model;
 
 @XmlRootElement
@@ -30,10 +32,11 @@ public class Buzzer extends Model {
 	private String email;
 
 	@Column
-	@XmlElement
+	@XmlTransient
 	@HttpParam
 	private String password;
 
+	@XmlTransient
 	@Column
 	private String salt;
 
@@ -76,6 +79,7 @@ public class Buzzer extends Model {
 	@Column
 	@XmlElement
 	@HttpParam
+	@Length(minLength = 2, maxLength = 2)
 	private String country;
 
 	@Column
