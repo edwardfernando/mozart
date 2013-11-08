@@ -2,6 +2,7 @@ package mozart.api.controller.datasource;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -29,9 +30,17 @@ public class CountryController extends Controller<Country> {
 	@Override
 	@DELETE
 	@Path("/{id}")
-	public Response delete(@PathParam("id") Long id, @Context HttpServletRequest request)
+	public Response delete(@PathParam("id") String id, @Context HttpServletRequest request)
 	        throws MozartException {
 		throw new MozartException("Unrecognized DELETE action for " + request.getPathInfo());
+	}
+
+	@Override
+	@GET
+	@Path("/{id}")
+	public Response loadById(@PathParam("id") String id, @Context HttpServletRequest request)
+	        throws MozartException {
+		return Response.ok(service.loadById(id)).build();
 	}
 
 	@Override

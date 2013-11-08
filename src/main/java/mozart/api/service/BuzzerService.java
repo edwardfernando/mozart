@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import mozart.api.dao.BuzzerDAO;
 import mozart.api.model.Buzzer;
 import mozart.core.api.Service;
+import mozart.core.datasource.CountryDataSource;
 import mozart.core.db.AbstractDAO;
 import mozart.core.exception.MozartException;
 
@@ -37,6 +38,12 @@ public class BuzzerService extends Service<Buzzer> {
 		Buzzer anotherBuzzer = dao.loadByEmail(buzzer.getEmail());
 		if (anotherBuzzer != null) {
 			throw new MozartException("Email already exist");
+		}
+
+		if (!CountryDataSource.instance().getCountriesMap().containsKey(buzzer.getCountry())) {
+			throw new MozartException(String.format(
+			    "No country found with code %s. Please use two digits ISO code for country code",
+			    buzzer.getCountry()));
 		}
 
 		String password = BCrypt.hashpw(buzzer.getPassword(), salt);

@@ -1,6 +1,7 @@
 package mozart.api.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -39,8 +40,17 @@ public class CountryService extends Service<Country> {
 	}
 
 	@Override
-	public Country loadById(Long id) throws MozartException {
-		return super.loadById(id);
+	public Country loadById(String id) throws MozartException {
+		Map<String, Country> countries = CountryDataSource.instance().getCountriesMap();
+		String capitalizedId = id.toUpperCase();
+
+		if (!countries.containsKey(capitalizedId)) {
+			throw new MozartException(String.format(
+			    "No country found with code %s. Please use two digits ISO code for country code",
+			    id));
+		}
+
+		return countries.get(capitalizedId);
 	}
 
 	@Override
