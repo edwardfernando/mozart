@@ -4,8 +4,6 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -15,6 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import mozart.core.annotation.HttpParam;
+import mozart.core.annotation.Length;
 import mozart.core.api.Model;
 
 @XmlRootElement
@@ -27,12 +26,6 @@ public class Advertiser extends Model {
 	@XmlElement
 	@HttpParam
 	private String organizationName;
-
-	@XmlElement
-	@HttpParam
-	@ManyToOne
-	@JoinColumn(name = "advertiser_type_id")
-	private AdvertiserType type;
 
 	@Column
 	@XmlElement
@@ -51,39 +44,58 @@ public class Advertiser extends Model {
 
 	@Column
 	@XmlElement
+	@HttpParam
 	private String city;
 
 	@Column
 	@XmlElement
+	@HttpParam
 	private String phoneCountryCode;
 
 	@Column
 	@XmlElement
+	@HttpParam
 	private String phoneAreaCode;
 
 	@Column
 	@XmlElement
+	@HttpParam
 	private String phoneNumber;
 
 	@Column
 	@XmlElement
+	@HttpParam
 	private String faxCountryCode;
 
 	@Column
 	@XmlElement
+	@HttpParam
 	private String faxAreaCode;
 
 	@Column
 	@XmlElement
+	@HttpParam
 	private String faxNumber;
 
 	@Column
 	@XmlElement
+	@HttpParam
 	private String email;
 
 	@Column
-	@XmlElement
+	@XmlTransient
+	@HttpParam
 	private String password;
+
+	@XmlTransient
+	@Column
+	private String salt;
+
+	@Column
+	@XmlElement
+	@HttpParam
+	@Length(minLength = 3, maxLength = 3)
+	private String advertiserType;
 
 	@XmlTransient
 	@OneToMany(mappedBy = "advertiser")
@@ -95,14 +107,6 @@ public class Advertiser extends Model {
 
 	public void setOrganizationName(String organizationName) {
 		this.organizationName = organizationName;
-	}
-
-	public AdvertiserType getType() {
-		return type;
-	}
-
-	public void setType(AdvertiserType type) {
-		this.type = type;
 	}
 
 	public String getAddress() {
@@ -207,6 +211,22 @@ public class Advertiser extends Model {
 
 	public void setCampaigns(Set<Campaign> campaigns) {
 		this.campaigns = campaigns;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+
+	public String getAdvertiserType() {
+		return advertiserType;
+	}
+
+	public void setAdvertiserType(String advertiserType) {
+		this.advertiserType = advertiserType;
 	}
 
 }

@@ -3,15 +3,11 @@ package mozart.api.service;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import mozart.core.api.Service;
 import mozart.core.datasource.CountryDataSource;
 import mozart.core.datasource.pojo.Country;
 import mozart.core.db.AbstractDAO;
 import mozart.core.exception.MozartException;
-import mozart.core.pagination.FilterCriteria;
-import mozart.core.pagination.FilterableQuery;
 
 import org.springframework.stereotype.Component;
 
@@ -30,18 +26,12 @@ public class CountryService extends Service<Country> {
 
 	@Override
 	public List<Country> loadAll() throws MozartException {
-		return CountryDataSource.instance().getCountriesList();
-	}
-
-	@Override
-	public List<Country> loadAll(HttpServletRequest arg0, Class<? extends FilterCriteria> arg1,
-	        Class<? extends FilterableQuery> arg2) throws MozartException {
-		return super.loadAll(arg0, arg1, arg2);
+		return CountryDataSource.instance().getList();
 	}
 
 	@Override
 	public Country loadById(String id) throws MozartException {
-		Map<String, Country> countries = CountryDataSource.instance().getCountriesMap();
+		Map<String, Country> countries = CountryDataSource.instance().getMap();
 		String capitalizedId = id.toUpperCase();
 
 		if (!countries.containsKey(capitalizedId)) {
@@ -51,11 +41,6 @@ public class CountryService extends Service<Country> {
 		}
 
 		return countries.get(capitalizedId);
-	}
-
-	@Override
-	public void save(HttpServletRequest request) throws MozartException {
-		super.save(request);
 	}
 
 }

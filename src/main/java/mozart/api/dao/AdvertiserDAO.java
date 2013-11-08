@@ -20,4 +20,11 @@ public class AdvertiserDAO extends AbstractDAO<Advertiser> {
 		    username,
 		    password);
 	}
+
+	public Advertiser loadByEmail(String email) throws MozartException {
+		Advertiser advertiser = (Advertiser) execUnique(
+		    "from Advertiser a where a.email = ?",
+		    email);
+		return advertiser;
+	}
 }

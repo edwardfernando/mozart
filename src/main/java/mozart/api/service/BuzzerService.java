@@ -40,7 +40,7 @@ public class BuzzerService extends Service<Buzzer> {
 			throw new MozartException("Email already exist");
 		}
 
-		if (!CountryDataSource.instance().getCountriesMap().containsKey(buzzer.getCountry())) {
+		if (!CountryDataSource.instance().getMap().containsKey(buzzer.getCountry())) {
 			throw new MozartException(String.format(
 			    "No country found with code %s. Please use two digits ISO code for country code",
 			    buzzer.getCountry()));
