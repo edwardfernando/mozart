@@ -29,6 +29,11 @@ public class BuzzerService extends Service<Buzzer> {
 		return Buzzer.class;
 	}
 
+	public Buzzer login(String email, String password) throws MozartException {
+
+		return null;
+	}
+
 	@Override
 	public void save(HttpServletRequest request) throws MozartException {
 		String salt = BCrypt.gensalt();
