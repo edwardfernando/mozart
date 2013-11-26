@@ -23,10 +23,9 @@ public class BuzzerAuthController {
 
 	@POST
 	@Path("/login")
-	public Response login(@FormParam("username") String email,
-	        @FormParam("password") String password) throws MozartException {
-
-		return Response.ok(email + " ~ " + password).build();
+	public Response login(@FormParam("email") String email, @FormParam("password") String password)
+	        throws MozartException {
+		return Response.ok(service.login(email, password)).build();
 	}
 
 }

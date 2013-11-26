@@ -30,8 +30,19 @@ public class BuzzerService extends Service<Buzzer> {
 	}
 
 	public Buzzer login(String email, String password) throws MozartException {
+		Buzzer buzzer = dao.loadByEmail(email);
 
-		return null;
+		if (buzzer == null) {
+			throw new MozartException(
+			                          String
+			                              .format("No registered user found with email %s", email));
+		}
+
+		if (!BCrypt.checkpw(password, buzzer.getPassword())) {
+			throw new MozartException("Invalid password");
+		}
+
+		return buzzer;
 	}
 
 	@Override

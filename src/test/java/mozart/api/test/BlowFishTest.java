@@ -7,23 +7,22 @@ import org.mindrot.jbcrypt.BCrypt;
 public class BlowFishTest extends TestCase {
 
 	public void test() {
-		String salt = "$2a$10$if9Ias8VSfrqNdC0jTyKqO";
+		System.out.println(BCrypt.checkpw(
+		    "edward.fer@gmail.com",
+		    "$2a$10$sj6mSHUGjP3vXshjPKod2eXh7CTe7i1QX6CaqG0Y3MNQRgYrOqwoW"));
 
-		String hashed = BCrypt.hashpw("edward", salt);
-		System.out.println("Hashed : " + hashed);
-
-		System.out.println("Matched : " +
-		                   BCrypt.checkpw(
-		                       "edward",
-		                       "$2a$10$if9Ias8VSfrqNdC0jTyKqOW004qqR1HEiKHlauskkMZIfvMdeZtHi"));
-		System.out.println("Matched : " +
-		                   BCrypt.checkpw(
-		                       "Edward",
-		                       "$2a$10$if9Ias8VSfrqNdC0jTyKqOW004qqR1HEiKHlauskkMZIfvMdeZtHi"));
-		System.out.println("Matched : " +
-		                   BCrypt.checkpw(
-		                       "edward ",
-		                       "$2a$10$if9Ias8VSfrqNdC0jTyKqOW004qqR1HEiKHlauskkMZIfvMdeZtHi"));
+		// System.out.println("Matched : " +
+		// BCrypt.checkpw(
+		// "edward",
+		// "$2a$10$if9Ias8VSfrqNdC0jTyKqOW004qqR1HEiKHlauskkMZIfvMdeZtHi"));
+		// System.out.println("Matched : " +
+		// BCrypt.checkpw(
+		// "Edward",
+		// "$2a$10$if9Ias8VSfrqNdC0jTyKqOW004qqR1HEiKHlauskkMZIfvMdeZtHi"));
+		// System.out.println("Matched : " +
+		// BCrypt.checkpw(
+		// "edward ",
+		// "$2a$10$if9Ias8VSfrqNdC0jTyKqOW004qqR1HEiKHlauskkMZIfvMdeZtHi"));
 	}
 
 }
