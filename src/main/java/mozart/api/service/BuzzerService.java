@@ -29,7 +29,10 @@ public class BuzzerService extends Service<Buzzer> {
 		return Buzzer.class;
 	}
 
-	public Buzzer login(String email, String password) throws MozartException {
+	public Buzzer login(HttpServletRequest request) throws MozartException {
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+
 		Buzzer buzzer = dao.loadByEmail(email);
 
 		if (buzzer == null) {

@@ -1,13 +1,15 @@
 package mozart.api.controller.biz.buzzer;
 
-import javax.ws.rs.FormParam;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import mozart.api.service.BuzzerService;
+import mozart.core.annotation.ExpectParam;
 import mozart.core.exception.MozartException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +25,9 @@ public class BuzzerAuthController {
 
 	@POST
 	@Path("/login")
-	public Response login(@FormParam("email") String email, @FormParam("password") String password)
-	        throws MozartException {
-		return Response.ok(service.login(email, password)).build();
+	@ExpectParam(optional = { "email", "password" })
+	public Response login(@Context HttpServletRequest request) throws MozartException {
+		return Response.ok(service.login(request)).build();
 	}
 
 }
